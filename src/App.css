@@ -1,0 +1,503 @@
+body {
+  /* background-image: url("\\Images\\bg.webp"); */
+  background-image: url("./Images/bg.webp");
+  /* background-size: 100vw 100vh; */
+  /* background-size: 300vw 300vh; */
+  /* min-width: 800px;
+  min-height: 600px; */
+  background-size: cover;
+  font-size: 20px;
+}
+
+:root {
+  --lightgrey: #d3d3d3;
+}
+
+#root {
+  display: flex;
+  min-width: 100vw;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.receptionDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.LabelDivider {
+  font-size: 24px;
+  color: black;
+  text-align: center;
+  font-weight: 700;
+  height: clamp(24px, 30px, 50px);
+}
+
+/* .buttondisabled {
+  border-color: #dddddd;
+  color: #dddddd;
+  cursor: not-allowed;
+  opacity: 1;
+} */
+
+.SidebarOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-evenly;
+  align-items: left;
+}
+
+.fieldRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  /* margin: 1rem 0; */
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(lightgrey);
+  opacity: 0.7; /* Firefox */
+  font-size: 0.7em;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(lightgrey);
+  opacity: 0.7; /* Firefox */
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(lightgrey);
+  opacity: 0.7; /* Firefox */
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.buttondiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.button-6 {
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.button-6:hover,
+.button-6:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.button-6:hover {
+  transform: translateY(-1px);
+}
+
+.button-6:active {
+  background-color: #f0f0f1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
+.button-6:disabled {
+  border-color: #dddddd;
+  color: #dddddd;
+  cursor: not-allowed;
+  opacity: 1;
+  margin-top: 10px;
+}
+
+.refreshicon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: purple;
+  gap: 5px;
+  height: clamp(25px, 50px, 80px);
+  width: clamp(60px, 80px, 100px);
+  box-sizing: border-box;
+  padding: 0px 3px;
+  border-radius: 10px;
+}
+
+.searchstyle {
+  background-color: gainsboro;
+  width: clamp(14px, 25px, 35px);
+  height: clamp(14px, 25px, 35px);
+  display: flex;
+  justify-content: center;
+  border-radius: 6px;
+  align-items: center;
+}
+
+.iconstyle {
+  cursor: pointer;
+}
+
+.refreshbutton {
+  font-size: 0.6rem;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  background-color: gainsboro;
+  padding: 1px 6px;
+  border-radius: 6px;
+}
+
+.dropdowncontainer {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  color: black;
+  left: 26%;
+  top: 80%;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
+/* Styling for the card section */
+/* .cardcontainer {
+  margin-top: 20px;
+  padding: 10px 0px;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.cardrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+}
+.carditem {
+  font-size: 1rem;
+}
+
+.cardData {
+  font-weight: bold;
+}
+.cardverticalline {
+  margin: 0 auto;
+  margin-top: 40px;
+  height: 20%;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1),
+    rgba(0, 0, 0, 0.75),
+    rgba(255, 255, 255, 1)
+  );
+} */
+
+.cardcontainer {
+  width: clamp(400px, 40%, 550px);
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.cardheader {
+  color: #333333;
+  margin: 0 0 10px;
+  text-align: center;
+  font-size: 1rem;
+}
+.cardbody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cardbodysection1 {
+  flex: 60%;
+}
+.data-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.data-label {
+  font-weight: bold;
+  color: #777777;
+  flex-basis: 40%;
+}
+
+.data-value {
+  text-align: left;
+  flex-basis: 60%;
+}
+
+.print-button {
+  flex: 20;
+  /* text-align: right; */
+}
+
+.cardprintbutton {
+  background-color: #4caf50;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.carddefaultbuttonstyle {
+  /* background-color: #4caf50;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer; */
+  height: clamp(30px, 40px, 60px);
+  text-align: center;
+  width: clamp(60px, 100px, 120px);
+}
+.deleteItem {
+  height: clamp(30px, 40px, 60px);
+  text-align: center;
+  width: clamp(60px, 100px, 120px);
+}
+.addItem {
+  height: clamp(30px, 40px, 60px);
+  text-align: center;
+  width: clamp(60px, 100px, 120px);
+}
+
+.nodatacard {
+  display: none;
+}
+
+/*logout button styles*/
+/* CSS */
+.button-23 {
+  background-color: white;
+  border: 2px solid #ff0b0b;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #222222;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  padding: 10px 30px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: box-shadow 0.2s, -ms-transform 0.1s, -webkit-transform 0.1s,
+    transform 0.1s;
+  user-select: none;
+  -webkit-user-select: none;
+  width: fit-content;
+}
+
+.button-23:focus-visible {
+  box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
+  transition: box-shadow 0.2s;
+}
+
+.button-23:active {
+  background-color: #f7f7f7;
+  border-color: #000000;
+  transform: scale(0.96);
+}
+
+.button-23:disabled {
+  border-color: #dddddd;
+  color: #dddddd;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+/* OP billing preview styles generated by chatgpt */
+
+.previewcontainer {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: clamp(400px, 600px, 800px);
+  margin: 0 auto;
+}
+
+.previewheader {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.previewlabel {
+  font-weight: bold;
+  color: #555;
+}
+
+.info {
+  margin-bottom: 20px;
+}
+
+.info-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.info-item {
+  flex: 1;
+}
+
+.lab-charges {
+  margin-top: 20px;
+}
+
+.previewtable {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.previewth,
+.previewtd {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.previewth_additional {
+  background-color: #f2f2f2;
+}
+
+.previewtr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  /* padding: 5px 10px; */
+  cursor: pointer;
+  font-size: 14px;
+  height: clamp(20px, 30px, 50px);
+  text-align: center;
+  width: clamp(20px, 70px, 80px);
+  border-radius: 8px;
+}
+.delete-btn:disabled {
+  background-color: #ccc;
+  color: #999;
+}
+.add-btn {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  /* padding: 5px 10px; */
+  cursor: pointer;
+  font-size: 14px;
+  height: clamp(20px, 30px, 50px);
+  text-align: center;
+  width: clamp(20px, 120px, 140px);
+  border-radius: 8px;
+}
+
+.printbutton {
+  color: white;
+}
+
+.printbutton:hover {
+  color: darkslateblue;
+  background-color: transparent;
+}
+
+/* preview the outpatientbilling invoice shape*/
+
+.BillDisplay {
+  height: clamp(200px, 300px, 400px);
+  width: clamp(500px, 600px, 700px);
+}

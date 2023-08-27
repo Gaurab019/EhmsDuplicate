@@ -1,0 +1,25 @@
+{
+  "patientid": "100042",
+  "patientname": "Gaurab",
+  "doctorid": "158",
+  "doctorname": "DR MADHAV",
+  "transactionid": "cash",
+  "labcharges": [
+    {
+      "labitemname": "bloodtest",
+      "nooftimes": 1
+    },
+    {
+      "labitemname": "CT Scan",
+      "nooftimes": 1
+    },
+    {
+      "labitemname": "CT Scan",
+      "nooftimes": 1
+    },
+    {
+      "labitemname": "CT Scan",
+      "nooftimes": 1
+    }
+  ]
+}

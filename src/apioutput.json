@@ -1,0 +1,86 @@
+{
+  "billno": "OPBR_723_a50b8235",
+  "patientid": "100042",
+  "doctorid": "158",
+  "opdetails": {
+    "Patientname": "Mr. Gaurab",
+    "Sex": "M",
+    "DOB": "1992-10-10T18:30:00.000Z",
+    "Phonenumber": "8638242343",
+    "ConsultingDoctor": "Dr madhav"
+  },
+  "transactionid": "cash",
+  "noofitems": 2,
+  "mrp": 3700,
+  "discount": 670,
+  "gstvalue": 0,
+  "additionalhospitalcharges": 363.59999999999997,
+  "payable": 3393.6,
+  "breakup": {
+    "labchargesdata": [
+      {
+        "serviceName": "bloodtest",
+        "Qty": 1,
+        "TotalMrp": 700,
+        "Discount": 70,
+        "Payable": 630
+      },
+      {
+        "serviceName": "CT Scan",
+        "Qty": 1,
+        "TotalMrp": 3000,
+        "Discount": 600,
+        "Payable": 2400
+      },
+      {
+        "serviceName": "bloodtest",
+        "Qty": 1,
+        "TotalMrp": 700,
+        "Discount": 70,
+        "Payable": 630
+      },
+      {
+        "serviceName": "bloodtest",
+        "Qty": 1,
+        "TotalMrp": 700,
+        "Discount": 70,
+        "Payable": 630
+      },
+      {
+        "serviceName": "bloodtest",
+        "Qty": 1,
+        "TotalMrp": 700,
+        "Discount": 70,
+        "Payable": 630
+      },
+      {
+        "serviceName": "bloodtest",
+        "Qty": 1,
+        "TotalMrp": 700,
+        "Discount": 70,
+        "Payable": 630
+      },
+      {
+        "serviceName": "CT Scan",
+        "Qty": 1,
+        "TotalMrp": 3000,
+        "Discount": 600,
+        "Payable": 2400
+      },
+      {
+        "serviceName": "bloodtest",
+        "Qty": 1,
+        "TotalMrp": 700,
+        "Discount": 70,
+        "Payable": 630
+      },
+      {
+        "serviceName": "bloodtest",
+        "Qty": 1,
+        "TotalMrp": 700,
+        "Discount": 70,
+        "Payable": 630
+      }
+    ]
+  }
+}

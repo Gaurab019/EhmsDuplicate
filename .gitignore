@@ -1,0 +1,7 @@
+node_modules
+
+# dont commit these files
+.env
+
+#dont push build files
+build
