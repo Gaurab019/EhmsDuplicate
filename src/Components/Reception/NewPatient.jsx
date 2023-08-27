@@ -167,100 +167,104 @@ const NewPatient = ({ othercharges }) => {
   };
 
   return (
-    <>
-      <h1 className="NPR">New Patient Registration</h1>
-      <form
-        onSubmit={(e) => {
-          console.log(e);
-          console.log("Registration details Submit called");
-          callValidationAndSubmit(e);
-        }}
-      >
-        <div className="Rece-flex-container">
-          <div className="container-right">
-            <div className=" patientDet">
-              {/* <FormDetails InputFields={InputFields} /> */}
-              <NameField
-                setpatientdetails={setpatientdetails}
-                triggerreset={triggerreset}
-                disabled={false}
-                externalvalue={""}
-              />
-              <Age
-                setpatientdetails={setpatientdetails}
-                triggerreset={triggerreset}
-              />
-              <Sex
-                setpatientdetails={setpatientdetails}
-                triggerreset={triggerreset}
-              />
-              <EmailField
-                setpatientdetails={setpatientdetails}
-                triggerreset={triggerreset}
-              />
-              <Mobile
-                setpatientdetails={setpatientdetails}
-                triggerreset={triggerreset}
-              />
-              <Altmobile
-                setpatientdetails={setpatientdetails}
-                triggerreset={triggerreset}
-              />
-              <Landline
-                setpatientdetails={setpatientdetails}
-                triggerreset={triggerreset}
-              />
-              <Amount
-                setpatientdetails={setpatientdetails}
-                // triggerreset={triggerreset}
-                externalvalue={registrationamt}
-              />
-              <PaymentType
-                setpatientdetails={setpatientdetails}
-                triggerreset={triggerreset}
-              />
-            </div>
+    <div className="[height:100%] [width:100%]">
+      <h1 className="bg-[#f2ecff] text-[#04040c] h-24 flex items-center justify-start box-border p-5 rounded-l-xl ml-2 mt-2 mb-12 [width:100%]">
+        New Patient Registration
+      </h1>
+      <div className="Rece-flex-item-right">
+        <form
+          onSubmit={(e) => {
+            console.log(e);
+            console.log("Registration details Submit called");
+            callValidationAndSubmit(e);
+          }}
+        >
+          {/* <div className="Rece-flex-container">
+            <div className="container-right"> */}
+          <div className=" patientDet">
+            {/* <FormDetails InputFields={InputFields} /> */}
+            <NameField
+              setpatientdetails={setpatientdetails}
+              triggerreset={triggerreset}
+              disabled={false}
+              externalvalue={""}
+            />
+            <Age
+              setpatientdetails={setpatientdetails}
+              triggerreset={triggerreset}
+            />
+            <Sex
+              setpatientdetails={setpatientdetails}
+              triggerreset={triggerreset}
+            />
+            <EmailField
+              setpatientdetails={setpatientdetails}
+              triggerreset={triggerreset}
+            />
+            <Mobile
+              setpatientdetails={setpatientdetails}
+              triggerreset={triggerreset}
+            />
+            <Altmobile
+              setpatientdetails={setpatientdetails}
+              triggerreset={triggerreset}
+            />
+            <Landline
+              setpatientdetails={setpatientdetails}
+              triggerreset={triggerreset}
+            />
+            <Amount
+              setpatientdetails={setpatientdetails}
+              // triggerreset={triggerreset}
+              externalvalue={registrationamt}
+            />
+            <PaymentType
+              setpatientdetails={setpatientdetails}
+              triggerreset={triggerreset}
+            />
           </div>
-        </div>
-        <div className="buttondiv">
-          <button
-            className="button-6 savesubmit"
-            type="submit"
-            // onClick={() => {
-            //   // enterPatientDetails(
-            //   //   process.env.REACT_APP_CreatePatient,
-            //   //   patientdetails
-            //   // );
-            //   callValidationAndSubmit();
-            // }}
-          >
-            Submit
-          </button>
-          <button
-            className="button-6 savesubmit"
-            type="button"
-            onClick={resetform}
-          >
-            Reset
-          </button>
-        </div>
-      </form>
-      <CardDisplay
-        key={1}
-        data={carddetails}
-        CardHeader={"Patient Registered Details"}
-        displayprintbutton={false}
-        displayIPVisitbutton={true}
-        displayOPLabbutton={true}
-        displayOPVisitbutton={true}
-        displayradiobutton={false}
-        displaykey={1}
-        setvisitingpatientid={() => {}}
-        setcardkey={() => {}}
-        cardkey={""}
-        displayheader={true}
-      />
-    </>
+          {/* </div>
+          </div> */}
+          <div className="buttondiv">
+            <button
+              className="button-6 savesubmit"
+              type="submit"
+              // onClick={() => {
+              //   // enterPatientDetails(
+              //   //   process.env.REACT_APP_CreatePatient,
+              //   //   patientdetails
+              //   // );
+              //   callValidationAndSubmit();
+              // }}
+            >
+              Submit
+            </button>
+            <button
+              className="button-6 savesubmit"
+              type="button"
+              onClick={resetform}
+            >
+              Reset
+            </button>
+          </div>
+        </form>
+        <CardDisplay
+          key={1}
+          data={carddetails}
+          CardHeader={"Patient Registered Details"}
+          displayprintbutton={false}
+          displayIPVisitbutton={true}
+          displayOPLabbutton={true}
+          displayOPVisitbutton={true}
+          displayradiobutton={false}
+          displaykey={1}
+          setvisitingpatientid={() => {}}
+          setcardkey={() => {}}
+          cardkey={""}
+          displayheader={true}
+        />
+      </div>
+    </div>
   );
 };
 

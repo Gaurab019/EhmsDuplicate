@@ -137,69 +137,72 @@ const SearchPatient = () => {
   };
 
   return (
-    <>
-      {" "}
-      <h1 className="NPR">Patient Search</h1>
-      <div className="Rece-flex-container">
-        <div className="container-right">
-          <div className="patientDet">
-            {" "}
-            <PatientID
-              setpatientdetails={setpatientdetails}
-              triggerreset={triggerreset}
-              needsearch={false}
-              patientid={patientID}
-              setpatientid={setpatientID}
-            />
-            <FormDetails InputFields={InputFields} />{" "}
-            <Mobile
-              setpatientdetails={setpatientdetails}
-              triggerreset={triggerreset}
-            />
-          </div>
+    <div className="[height:100%] [width:100%]">
+      <h1 className="bg-[#f2ecff] text-[#04040c] h-24 flex items-center justify-start box-border p-5 rounded-l-xl ml-2 mt-2 mb-12 [width:100%]">
+        Patient Search
+      </h1>
+      {/* <div className="Rece-flex-container">
+        <div className="container-right"> */}
+      <div className="Rece-flex-item-right">
+        <div className="patientDet">
+          {" "}
+          <PatientID
+            setpatientdetails={setpatientdetails}
+            triggerreset={triggerreset}
+            needsearch={false}
+            patientid={patientID}
+            setpatientid={setpatientID}
+          />
+          <FormDetails InputFields={InputFields} />{" "}
+          <Mobile
+            setpatientdetails={setpatientdetails}
+            triggerreset={triggerreset}
+          />
         </div>
+        {/* </div>
+        </div> */}
+        <div className="buttondiv">
+          <button className="button-6 savesubmit" onClick={resetform}>
+            Reset
+          </button>
+          <button className="button-6 savesubmit" onClick={searchPatient}>
+            Search
+          </button>
+          {/* <button
+            className={
+              carddetails.length <= 0 ? "button-6" : "button-6 savesubmit"
+            }
+            onClick={() => {
+              // console.log(visitingpatientid);
+              navigatetocreatevisit();
+            }}
+            disabled={carddetails.length <= 0}
+          >
+            Create Visit
+          </button> */}
+        </div>
+        {carddetails.length > 0 &&
+          carddetails.map((item, key) => {
+            // // console.log(key);
+            return (
+              <CardDisplay
+                key={key}
+                displaykey={key}
+                data={item}
+                setvisitingpatientid={setVisitingpatientid}
+                displayheader={false}
+                displayprintbutton={false}
+                displayIPVisitbutton={true}
+                displayOPLabbutton={true}
+                displayOPVisitbutton={true}
+                displayradiobutton={true}
+                setcardkey={setcardkey}
+                cardkey={cardkey}
+              />
+            );
+          })}
       </div>
-      <div className="buttondiv">
-        <button className="button-6 savesubmit" onClick={resetform}>
-          Reset
-        </button>
-        <button className="button-6 savesubmit" onClick={searchPatient}>
-          Search
-        </button>
-        {/* <button
-          className={
-            carddetails.length <= 0 ? "button-6" : "button-6 savesubmit"
-          }
-          onClick={() => {
-            // console.log(visitingpatientid);
-            navigatetocreatevisit();
-          }}
-          disabled={carddetails.length <= 0}
-        >
-          Create Visit
-        </button> */}
-      </div>
-      {carddetails.length > 0 &&
-        carddetails.map((item, key) => {
-          // // console.log(key);
-          return (
-            <CardDisplay
-              key={key}
-              displaykey={key}
-              data={item}
-              setvisitingpatientid={setVisitingpatientid}
-              displayheader={false}
-              displayprintbutton={false}
-              displayIPVisitbutton={true}
-              displayOPLabbutton={true}
-              displayOPVisitbutton={true}
-              displayradiobutton={true}
-              setcardkey={setcardkey}
-              cardkey={cardkey}
-            />
-          );
-        })}
-    </>
+    </div>
   );
 };
 

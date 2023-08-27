@@ -287,61 +287,57 @@ function Reception() {
   // );
   // billChargesTable
   return (
-    <div className="flex gap-5 justify-between items-center [width:100vw]">
-      <div className="Rece-flex-item-left">
-        <div className="position-fixed left-10 Rece-flex-item-left p-0 top-0 [height:100vh]">
-          <SideBar
-            Info1={SideBarInfo1}
-            Info2={SideBarInfo2}
-            parentPath={parentPath}
-          />
-          <button className="button-23" onClick={logout}>
-            Logout
-          </button>
-        </div>
+    <div className="flex justify-between items-center [width:100vw] [height:100vh] bg-[#f9f9f9]">
+      <div className="flex flex-col box-border [height:100vh] relative min-w-[20vw] xl:min-w-[15vw]">
+        <SideBar
+          Info1={SideBarInfo1}
+          Info2={SideBarInfo2}
+          parentPath={parentPath}
+          logout={logout}
+        />
       </div>
-      <div className="Rece-flex-container">
-        <div className="Rece-flex-item-right">
-          <Routes>
-            <Route
-              path="newPatient"
-              element={
-                <NewPatient
-                  newddlist={newddlist}
-                  triggertoggle={triggertoggle}
-                  setTriggertoggle={setTriggertoggle}
-                  othercharges={billChargesTable[2]}
-                />
-              }
-            />
-            <Route path="search" element={<SearchPatient />} />
-            <Route
-              path="createvisit/*"
-              element={
-                <CreateVisitButtons
-                  newddlist={newddlist}
-                  triggertoggle={triggertoggle}
-                  setTriggertoggle={setTriggertoggle}
-                  inPatientCodes={{
-                    departmentsvalueslist,
-                    beddetailslist,
-                    govtdetailslist,
-                  }}
-                />
-              }
-            />
-            <Route
-              path="createinvoice/*"
-              element={
-                <CreateBIllingButtons
-                  newddlist={newddlist}
-                  triggertoggle={triggertoggle}
-                  setTriggertoggle={setTriggertoggle}
-                  billChargesTable={billChargesTable}
-                />
-              }
-            />
-            {/* <Route
+      <div className="flex [height:100%] [width:100%] pl-2 pr-2">
+        {/* <div className="Rece-flex-item-right"> */}
+        <Routes>
+          <Route
+            path="newPatient"
+            element={
+              <NewPatient
+                newddlist={newddlist}
+                triggertoggle={triggertoggle}
+                setTriggertoggle={setTriggertoggle}
+                othercharges={billChargesTable[2]}
+              />
+            }
+          />
+          <Route path="search" element={<SearchPatient />} />
+          <Route
+            path="createvisit/*"
+            element={
+              <CreateVisitButtons
+                newddlist={newddlist}
+                triggertoggle={triggertoggle}
+                setTriggertoggle={setTriggertoggle}
+                inPatientCodes={{
+                  departmentsvalueslist,
+                  beddetailslist,
+                  govtdetailslist,
+                }}
+              />
+            }
+          />
+          <Route
+            path="createinvoice/*"
+            element={
+              <CreateBIllingButtons
+                newddlist={newddlist}
+                triggertoggle={triggertoggle}
+                setTriggertoggle={setTriggertoggle}
+                billChargesTable={billChargesTable}
+              />
+            }
+          />
+          {/* <Route
             path="createinvoice/*"
             element={
               <CreateInvoice
@@ -352,11 +348,11 @@ function Reception() {
               />
             }
           /> */}
-            {/* <Route path="createinvoice/*" render={(props) => <CreateInvoice {...props} data={newddlist}/>} /> */}
-          </Routes>
-        </div>
+          {/* <Route path="createinvoice/*" render={(props) => <CreateInvoice {...props} data={newddlist}/>} /> */}
+        </Routes>
       </div>
     </div>
+    // </div>
   );
 }
 

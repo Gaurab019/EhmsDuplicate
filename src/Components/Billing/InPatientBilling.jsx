@@ -559,268 +559,111 @@ function InPatientBilling(props) {
   // // console.log('labItems: ',labItems,"props labchrages : ",props.billChargesTable)
 
   return (
-    <div>
+    <div className="[height:100%] [width:100%] overflow-y-scroll overflow-x-clip">
       {" "}
-      <h1 className="NPR">Create IP Billing </h1>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          callValidationAndSubmit(e);
-        }}
-        className="flex flex-col"
-      >
-        {!generateReport && !preview && (
-          <div className="Rece-flex-container">
-            <div className="container-right">
-              <div className="patientDet">
-                <SearchInPatientID
-                  setpatientdetails={setpatientdetails}
-                  searchPatient={searchPatient}
-                  BsSearch={BsSearch}
-                  triggerreset={triggerreset}
-                  needsearch={true}
-                  patientid={patientid}
-                  setpatientid={setpatientID}
-                />
-                <DisabledPatientName
-                  externalvalue={searchPatientResult.patientname}
-                  triggerreset={triggerreset}
-                />
-
-                {/* <div className="fieldRow">
-              <span className="patHeading">Patient Name</span>
-              <span className="star">*</span> 
-              <input
-                type="text"
-                className="RecInp"
-                value ={searchPatientResult.patientname}
-              />{""}
-            </div> */}
-                <ConsultingDoctor
-                  searchDoc={searchDoc}
-                  setsearchDoc={setsearchDoc}
-                  setSelectedOption={setSelectedOption}
-                  selectedoption={patientdetails.patientdetails?.doctorname}
-                  newddlist={props.newddlist}
-                  triggertoggle={props.triggertoggle}
-                  triggerreset={triggerreset}
-                  setTriggertoggle={props.setTriggertoggle}
-                />
-                <PaymentType
-                  setpatientdetails={setpatientdetails}
-                  triggerreset={triggerreset}
-                  externalvalue={
-                    patientdetails.patientdetails?.transactionid
-                      ? patientdetails.patientdetails?.transactionid
-                      : ""
-                  }
-                />
-                {/* <div>
-                  <span className="patHeading">Advance Bill</span>
-                  <span className="star">*</span>
-                  <input
-                    required
-                    title="Advance Bill"
-                    type="checkbox"
-                    checked={false}
-                    className="RecInp"
-                    maxLength={50}
-                    placeholder="Payment Type"
-                    onChange={(e) => {
-                      console.log(e.target.checked);
-                    }}
+      <h1 className="bg-[#f2ecff] text-[#04040c] h-24 flex items-center justify-start box-border p-5 rounded-l-xl ml-2 mt-2 mb-12 [width:100%]">
+        Create IP Billing{" "}
+      </h1>
+      <div className="Rece-flex-item-right">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            callValidationAndSubmit(e);
+          }}
+          className="flex flex-col"
+        >
+          {!generateReport && !preview && (
+            <div className="Rece-flex-container">
+              <div className="container-right">
+                <div className="patientDet">
+                  <SearchInPatientID
+                    setpatientdetails={setpatientdetails}
+                    searchPatient={searchPatient}
+                    BsSearch={BsSearch}
+                    triggerreset={triggerreset}
+                    needsearch={true}
+                    patientid={patientid}
+                    setpatientid={setpatientID}
                   />
-                </div> */}
-                {showRegistrationBanner && (
-                  <div className="text-red-500 text-sm">
-                    * Registration Charges will be added for this patient in
-                    final bill
-                  </div>
-                )}
+                  <DisabledPatientName
+                    externalvalue={searchPatientResult.patientname}
+                    triggerreset={triggerreset}
+                  />
 
-                <div className="flex justify-center items-center gap-2 flex-col">
-                  {labItems?.map((lab, index) => (
-                    <div
-                      key={index}
-                      className="flex flex-row gap-3 items-center justify-center "
-                    >
-                      <div className="flex justify-center items-center gap-1">
-                        <span className="patHeading">Lab Item</span>
-                        <span className="text-red-500">*</span>
-                        <select
-                          required
-                          className="w-44 h-8"
-                          value={lab.labItem}
-                          onChange={(e) =>
-                            handleInputChange(index, "labItem", e.target.value)
-                          }
-                        >
-                          <option value="">Select Lab Item</option>
-                          {props.billChargesTable[0]?.labchargesdata?.map(
-                            (item) => (
-                              <option
-                                key={item.serviceid}
-                                value={item.servicename}
-                              >
-                                {item.servicename.concat(" - Rs ", item.cost)}
-                              </option>
-                            )
-                          )}
-                        </select>
-                      </div>
-                      <div className="flex justify-center items-center  gap-1">
-                        <span className="patHeading">Qty</span>
-                        <span className="text-red-500">*</span>
-                        <input
-                          required
-                          type="number"
-                          className="w-10 h-8"
-                          placeholder="No of Item"
-                          value={lab.noOfItem}
-                          onChange={(e) => {
-                            if (e.target.value < 999 && e.target.value >= 0) {
-                              if (e.target.value.length == 0) {
-                                handleInputChange(
-                                  index,
-                                  "noOfItem",
-                                  e.target.value
-                                );
-                              } else if (e.target.value > 0) {
-                                handleInputChange(
-                                  index,
-                                  "noOfItem",
-                                  e.target.value
-                                );
-                              }
-                            }
-                          }}
-                        />
-                        <input type="hidden" value={lab.serviceid} />
-                        <button
-                          type="button"
-                          className="delete-btn"
-                          onClick={() => handleDeleteLabItem(index)}
-                        >
-                          Delete
-                        </button>
-                      </div>
+                  {/* <div className="fieldRow">
+                <span className="patHeading">Patient Name</span>
+                <span className="star">*</span> 
+                <input
+                  type="text"
+                  className="RecInp"
+                  value ={searchPatientResult.patientname}
+                />{""}
+              </div> */}
+                  <ConsultingDoctor
+                    searchDoc={searchDoc}
+                    setsearchDoc={setsearchDoc}
+                    setSelectedOption={setSelectedOption}
+                    selectedoption={patientdetails.patientdetails?.doctorname}
+                    newddlist={props.newddlist}
+                    triggertoggle={props.triggertoggle}
+                    triggerreset={triggerreset}
+                    setTriggertoggle={props.setTriggertoggle}
+                  />
+                  <PaymentType
+                    setpatientdetails={setpatientdetails}
+                    triggerreset={triggerreset}
+                    externalvalue={
+                      patientdetails.patientdetails?.transactionid
+                        ? patientdetails.patientdetails?.transactionid
+                        : ""
+                    }
+                  />
+                  {/* <div>
+                    <span className="patHeading">Advance Bill</span>
+                    <span className="star">*</span>
+                    <input
+                      required
+                      title="Advance Bill"
+                      type="checkbox"
+                      checked={false}
+                      className="RecInp"
+                      maxLength={50}
+                      placeholder="Payment Type"
+                      onChange={(e) => {
+                        console.log(e.target.checked);
+                      }}
+                    />
+                  </div> */}
+                  {showRegistrationBanner && (
+                    <div className="text-red-500 text-sm">
+                      * Registration Charges will be added for this patient in
+                      final bill
                     </div>
-                  ))}
+                  )}
 
-                  <button
-                    className="add-btn"
-                    onClick={handleAddLabItem}
-                    type="button"
-                  >
-                    Add Lab Item
-                  </button>
-                </div>
-                <div className="flex justify-center items-center gap-2 flex-col">
-                  {bedItems?.map((bed, index) => (
-                    <div
-                      key={index}
-                      className="flex flex-row gap-3 items-center justify-center "
-                    >
-                      <div className="flex justify-center items-center gap-1">
-                        <span className="patHeading">Bed Item</span>
-                        <span className="text-red-500">*</span>
-                        <select
-                          required
-                          className="w-44 h-8"
-                          value={bed.bedItem}
-                          onChange={(e) =>
-                            handleInputChangeBed(
-                              index,
-                              "bedItem",
-                              e.target.value
-                            )
-                          }
-                        >
-                          <option value="">Select Bed Item</option>
-                          {props.billChargesTable[1].bedchargesdata?.map(
-                            (item) => (
-                              <option
-                                key={item.serviceid}
-                                value={item.servicename}
-                              >
-                                {item.servicename.concat(" - Rs ", item.cost)}
-                              </option>
-                            )
-                          )}
-                        </select>
-                      </div>
-                      <div className="flex justify-center items-center  gap-1">
-                        <span className="patHeading">Days</span>
-                        <span className="text-red-500">*</span>
-                        <input
-                          required
-                          type="number"
-                          className="w-10 h-8"
-                          placeholder="No of Item"
-                          value={bed.noOfItem}
-                          onChange={(e) => {
-                            if (e.target.value < 999 && e.target.value >= 0) {
-                              if (e.target.value.length == 0) {
-                                handleInputChangeBed(
-                                  index,
-                                  "noOfItem",
-                                  e.target.value
-                                );
-                              } else if (e.target.value > 0) {
-                                handleInputChangeBed(
-                                  index,
-                                  "noOfItem",
-                                  e.target.value
-                                );
-                              }
-                            }
-                          }}
-                        />
-                        <input type="hidden" value={bed.serviceid} />
-                        <button
-                          type="button"
-                          className="delete-btn"
-                          onClick={() => handleDeleteBedItem(index)}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-
-                  <button
-                    type="button"
-                    className="add-btn"
-                    onClick={handleAddBedItem}
-                    text-align="right"
-                  >
-                    Add Bed Item
-                  </button>
-                </div>
-                <div className="flex justify-center items-center gap-2 flex-col">
-                  {otherItems?.map((otheritem, index) => (
-                    <div
-                      key={index}
-                      className="flex flex-col gap-1 items-center justify-center "
-                    >
-                      <div className="flex justify-center items-center gap-1">
+                  <div className="flex justify-center items-center gap-2 flex-col">
+                    {labItems?.map((lab, index) => (
+                      <div
+                        key={index}
+                        className="flex flex-row gap-3 items-center justify-center "
+                      >
                         <div className="flex justify-center items-center gap-1">
-                          <span className="patHeading">Other Items</span>
+                          <span className="patHeading">Lab Item</span>
                           <span className="text-red-500">*</span>
                           <select
                             required
                             className="w-44 h-8"
-                            value={otheritem.otherItem}
+                            value={lab.labItem}
                             onChange={(e) =>
-                              handleInputChangeOtherItems(
+                              handleInputChange(
                                 index,
-                                "otherItem",
+                                "labItem",
                                 e.target.value
                               )
                             }
                           >
-                            <option value="">Select Other Item</option>
-                            {props.billChargesTable[2].otherchargesdata?.map(
+                            <option value="">Select Lab Item</option>
+                            {props.billChargesTable[0]?.labchargesdata?.map(
                               (item) => (
                                 <option
                                   key={item.serviceid}
@@ -840,17 +683,17 @@ function InPatientBilling(props) {
                             type="number"
                             className="w-10 h-8"
                             placeholder="No of Item"
-                            value={otheritem.noOfItem}
+                            value={lab.noOfItem}
                             onChange={(e) => {
                               if (e.target.value < 999 && e.target.value >= 0) {
                                 if (e.target.value.length == 0) {
-                                  handleInputChangeOtherItems(
+                                  handleInputChange(
                                     index,
                                     "noOfItem",
                                     e.target.value
                                   );
                                 } else if (e.target.value > 0) {
-                                  handleInputChangeOtherItems(
+                                  handleInputChange(
                                     index,
                                     "noOfItem",
                                     e.target.value
@@ -859,191 +702,364 @@ function InPatientBilling(props) {
                               }
                             }}
                           />
-                          <input type="hidden" value={otheritem.serviceid} />
-                          <div className="font-light flex flex-col justify-center items-center text-xs gap-2 ml-4">
-                            <div className="flex items-center justify-between gap-1 bg-slate-300 p-1 rounded">
-                              <input
-                                type="checkbox"
-                                defaultChecked={false}
-                                checked={otheritem.manualAmtEntry}
-                                id={`ManualAmtEntry${index}`}
-                                onChange={(e) => {
-                                  e.stopPropagation();
-                                  console.log(index);
-                                  handleInputChangeOtherItems(
-                                    index,
-                                    "manualAmtEntry",
-                                    e.target.checked
-                                  );
-                                  // setmanualEntryTrigger(!manualEntryTrigger);
-                                }}
-                              />
-                              <label
-                                htmlFor={`ManualAmtEntry${index}`}
-                                className="text-purple-700 mb-0 text-xs"
-                              >
-                                Manual Amt Entry
-                              </label>
-                            </div>
-                            <button
-                              type="button"
-                              className="delete-btn"
-                              onClick={() => handleDeleteOtherItem(index)}
-                            >
-                              Delete
-                            </button>
-                          </div>
+                          <input type="hidden" value={lab.serviceid} />
+                          <button
+                            type="button"
+                            className="delete-btn"
+                            onClick={() => handleDeleteLabItem(index)}
+                          >
+                            Delete
+                          </button>
                         </div>
                       </div>
-                      <div>
-                        {otheritem.manualAmtEntry ? (
-                          <div className="flex gap-2 items-center justify-evenly">
-                            <span className="patHeading">
-                              Amount
-                              <span className="text-red-500 ml-1">*</span>
-                            </span>
+                    ))}
+
+                    <button
+                      className="add-btn"
+                      onClick={handleAddLabItem}
+                      type="button"
+                    >
+                      Add Lab Item
+                    </button>
+                  </div>
+                  <div className="flex justify-center items-center gap-2 flex-col">
+                    {bedItems?.map((bed, index) => (
+                      <div
+                        key={index}
+                        className="flex flex-row gap-3 items-center justify-center "
+                      >
+                        <div className="flex justify-center items-center gap-1">
+                          <span className="patHeading">Bed Item</span>
+                          <span className="text-red-500">*</span>
+                          <select
+                            required
+                            className="w-44 h-8"
+                            value={bed.bedItem}
+                            onChange={(e) =>
+                              handleInputChangeBed(
+                                index,
+                                "bedItem",
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option value="">Select Bed Item</option>
+                            {props.billChargesTable[1].bedchargesdata?.map(
+                              (item) => (
+                                <option
+                                  key={item.serviceid}
+                                  value={item.servicename}
+                                >
+                                  {item.servicename.concat(" - Rs ", item.cost)}
+                                </option>
+                              )
+                            )}
+                          </select>
+                        </div>
+                        <div className="flex justify-center items-center  gap-1">
+                          <span className="patHeading">Days</span>
+                          <span className="text-red-500">*</span>
+                          <input
+                            required
+                            type="number"
+                            className="w-10 h-8"
+                            placeholder="No of Item"
+                            value={bed.noOfItem}
+                            onChange={(e) => {
+                              if (e.target.value < 999 && e.target.value >= 0) {
+                                if (e.target.value.length == 0) {
+                                  handleInputChangeBed(
+                                    index,
+                                    "noOfItem",
+                                    e.target.value
+                                  );
+                                } else if (e.target.value > 0) {
+                                  handleInputChangeBed(
+                                    index,
+                                    "noOfItem",
+                                    e.target.value
+                                  );
+                                }
+                              }
+                            }}
+                          />
+                          <input type="hidden" value={bed.serviceid} />
+                          <button
+                            type="button"
+                            className="delete-btn"
+                            onClick={() => handleDeleteBedItem(index)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+
+                    <button
+                      type="button"
+                      className="add-btn"
+                      onClick={handleAddBedItem}
+                      text-align="right"
+                    >
+                      Add Bed Item
+                    </button>
+                  </div>
+                  <div className="flex justify-center items-center gap-2 flex-col">
+                    {otherItems?.map((otheritem, index) => (
+                      <div
+                        key={index}
+                        className="flex flex-col gap-1 items-center justify-center "
+                      >
+                        <div className="flex justify-center items-center gap-1">
+                          <div className="flex justify-center items-center gap-1">
+                            <span className="patHeading">Other Items</span>
+                            <span className="text-red-500">*</span>
+                            <select
+                              required
+                              className="w-44 h-8"
+                              value={otheritem.otherItem}
+                              onChange={(e) =>
+                                handleInputChangeOtherItems(
+                                  index,
+                                  "otherItem",
+                                  e.target.value
+                                )
+                              }
+                            >
+                              <option value="">Select Other Item</option>
+                              {props.billChargesTable[2].otherchargesdata?.map(
+                                (item) => (
+                                  <option
+                                    key={item.serviceid}
+                                    value={item.servicename}
+                                  >
+                                    {item.servicename.concat(
+                                      " - Rs ",
+                                      item.cost
+                                    )}
+                                  </option>
+                                )
+                              )}
+                            </select>
+                          </div>
+                          <div className="flex justify-center items-center  gap-1">
+                            <span className="patHeading">Qty</span>
+                            <span className="text-red-500">*</span>
                             <input
                               required
                               type="number"
-                              className="w-32 h-8"
+                              className="w-10 h-8"
                               placeholder="No of Item"
-                              // min="0.01"
-                              // step="0.01"
-                              value={otheritem.cost}
+                              value={otheritem.noOfItem}
                               onChange={(e) => {
-                                console.log(e.target.value);
-                                if (e.target.value >= 0) {
-                                  handleInputChangeOtherItems(
-                                    index,
-                                    "cost",
-                                    e.target.value
-                                  );
-                                  console.log("Amount");
+                                if (
+                                  e.target.value < 999 &&
+                                  e.target.value >= 0
+                                ) {
+                                  if (e.target.value.length == 0) {
+                                    handleInputChangeOtherItems(
+                                      index,
+                                      "noOfItem",
+                                      e.target.value
+                                    );
+                                  } else if (e.target.value > 0) {
+                                    handleInputChangeOtherItems(
+                                      index,
+                                      "noOfItem",
+                                      e.target.value
+                                    );
+                                  }
                                 }
                               }}
                             />
+                            <input type="hidden" value={otheritem.serviceid} />
+                            <div className="font-light flex flex-col justify-center items-center text-xs gap-2 ml-4">
+                              <div className="flex items-center justify-between gap-1 bg-slate-300 p-1 rounded">
+                                <input
+                                  type="checkbox"
+                                  defaultChecked={false}
+                                  checked={otheritem.manualAmtEntry}
+                                  id={`ManualAmtEntry${index}`}
+                                  onChange={(e) => {
+                                    e.stopPropagation();
+                                    console.log(index);
+                                    handleInputChangeOtherItems(
+                                      index,
+                                      "manualAmtEntry",
+                                      e.target.checked
+                                    );
+                                    // setmanualEntryTrigger(!manualEntryTrigger);
+                                  }}
+                                />
+                                <label
+                                  htmlFor={`ManualAmtEntry${index}`}
+                                  className="text-purple-700 mb-0 text-xs"
+                                >
+                                  Manual Amt Entry
+                                </label>
+                              </div>
+                              <button
+                                type="button"
+                                className="delete-btn"
+                                onClick={() => handleDeleteOtherItem(index)}
+                              >
+                                Delete
+                              </button>
+                            </div>
                           </div>
-                        ) : (
-                          void 0
-                        )}
+                        </div>
+                        <div>
+                          {otheritem.manualAmtEntry ? (
+                            <div className="flex gap-2 items-center justify-evenly">
+                              <span className="patHeading">
+                                Amount
+                                <span className="text-red-500 ml-1">*</span>
+                              </span>
+                              <input
+                                required
+                                type="number"
+                                className="w-32 h-8"
+                                placeholder="No of Item"
+                                // min="0.01"
+                                // step="0.01"
+                                value={otheritem.cost}
+                                onChange={(e) => {
+                                  console.log(e.target.value);
+                                  if (e.target.value >= 0) {
+                                    handleInputChangeOtherItems(
+                                      index,
+                                      "cost",
+                                      e.target.value
+                                    );
+                                    console.log("Amount");
+                                  }
+                                }}
+                              />
+                            </div>
+                          ) : (
+                            void 0
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
 
-                  <button
-                    type="button"
-                    className="add-btn"
-                    onClick={handleAddOtherItem}
-                    text-align="right"
-                  >
-                    Add Other Item
-                  </button>
+                    <button
+                      type="button"
+                      className="add-btn"
+                      onClick={handleAddOtherItem}
+                      text-align="right"
+                    >
+                      Add Other Item
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
-        <div className="flex justify-center items-center flex-col xl:flex-row">
-          <div>
-            {preview && (
-              <div>
-                <JsonPreview
-                  setJsonData={setJsonData}
-                  jsonData={jsonData}
-                  removeDeleteBtn={removeDeleteBtn}
-                  handleDeleteLabItem={handleDeleteLabItem}
-                  handleDeleteBedItem={handleDeleteBedItem}
-                  handleDeleteOtherItem={handleDeleteOtherItem}
-                />
-              </div>
-            )}
-            <div className="buttondiv">
-              {!generateReport && !preview && (
-                <button
-                  class="button-6 savesubmit"
-                  onClick={resetform}
-                  type="button"
-                >
-                  Reset
-                </button>
-              )}
-              {preview && (
-                <button
-                  class="button-6 savesubmit"
-                  onClick={() => {
-                    setPreview(false);
-                    setGenerateReport(false);
-                    setRemoveDeleteBtn(false);
-                  }}
-                  type="button"
-                >
-                  Back
-                </button>
-              )}
-              {!generateReport && !preview && (
-                <button
-                  class="button-6 savesubmit"
-                  type="button"
-                  onClick={previewFormData}
-                >
-                  Preview
-                </button>
-              )}
-              {preview && !generateReport && (
-                <button
-                  class="button-6 savesubmit"
-                  // onClick={callValidationAndSubmit}
-                  type="submit"
-                  // disabled={generateReport}
-                >
-                  SUBMIT
-                </button>
-              )}
-              {/* {generateReport && (
-              <button class="button-6 savesubmit" onClick={callDownloadReport}>
-                Download
-              </button>
-            )} */}
-            </div>
-          </div>
-          {generateReport && (
-            // <div className="flex BillDisplay">
-            <InvoiceGenerator
-              patientid={opBillingResponse?.admissiondetails.patientid}
-              patientname={opBillingResponse?.admissiondetails.patientname}
-              sex={opBillingResponse?.admissiondetails.sex}
-              doctorname={opBillingResponse?.admissiondetails.consultingdoctor}
-              age={
-                opBillingResponse?.admissiondetails.age + variables.agesuffix
-              }
-              phonenumber={
-                opBillingResponse?.admissiondetails.relativephonenumber
-              }
-              totalmrp={opBillingResponse?.mrp.toFixed(2)}
-              additionalhospitalcharges={opBillingResponse?.additionalhospitalcharges.toFixed(
-                2
-              )}
-              IPR={opBillingResponse?.admissiondetails?.IPRNo}
-              relativename={opBillingResponse?.admissiondetails?.relativename}
-              relativephone={
-                opBillingResponse?.admissiondetails?.relativephonenumber
-              }
-              relativerelation={
-                opBillingResponse?.admissiondetails?.relativerelation
-              }
-              // relativephone={opBillingResponse?.admissiondetails?.relativephonenumber}
-              transactionid={opBillingResponse?.transactionid.toUpperCase()}
-              gstvalue={opBillingResponse?.gstvalue.toFixed(2)}
-              payable={opBillingResponse?.payable.toFixed(2)}
-              list={list}
-              invoiceNumber={opBillingResponse?.billno}
-              invoiceDate={new Date().toJSON().slice(0, 10)}
-              billername={username}
-            />
-            // </div>
           )}
-        </div>
-      </form>
+          <div className="flex justify-center items-center flex-col xl:flex-row">
+            <div>
+              {preview && (
+                <div>
+                  <JsonPreview
+                    setJsonData={setJsonData}
+                    jsonData={jsonData}
+                    removeDeleteBtn={removeDeleteBtn}
+                    handleDeleteLabItem={handleDeleteLabItem}
+                    handleDeleteBedItem={handleDeleteBedItem}
+                    handleDeleteOtherItem={handleDeleteOtherItem}
+                  />
+                </div>
+              )}
+              <div className="buttondiv">
+                {!generateReport && !preview && (
+                  <button
+                    class="button-6 savesubmit"
+                    onClick={resetform}
+                    type="button"
+                  >
+                    Reset
+                  </button>
+                )}
+                {preview && (
+                  <button
+                    class="button-6 savesubmit"
+                    onClick={() => {
+                      setPreview(false);
+                      setGenerateReport(false);
+                      setRemoveDeleteBtn(false);
+                    }}
+                    type="button"
+                  >
+                    Back
+                  </button>
+                )}
+                {!generateReport && !preview && (
+                  <button
+                    class="button-6 savesubmit"
+                    type="button"
+                    onClick={previewFormData}
+                  >
+                    Preview
+                  </button>
+                )}
+                {preview && !generateReport && (
+                  <button
+                    class="button-6 savesubmit"
+                    // onClick={callValidationAndSubmit}
+                    type="submit"
+                    // disabled={generateReport}
+                  >
+                    SUBMIT
+                  </button>
+                )}
+                {/* {generateReport && (
+                <button class="button-6 savesubmit" onClick={callDownloadReport}>
+                  Download
+                </button>
+              )} */}
+              </div>
+            </div>
+            {generateReport && (
+              // <div className="flex BillDisplay">
+              <InvoiceGenerator
+                patientid={opBillingResponse?.admissiondetails.patientid}
+                patientname={opBillingResponse?.admissiondetails.patientname}
+                sex={opBillingResponse?.admissiondetails.sex}
+                doctorname={
+                  opBillingResponse?.admissiondetails.consultingdoctor
+                }
+                age={
+                  opBillingResponse?.admissiondetails.age + variables.agesuffix
+                }
+                phonenumber={
+                  opBillingResponse?.admissiondetails.relativephonenumber
+                }
+                totalmrp={opBillingResponse?.mrp.toFixed(2)}
+                additionalhospitalcharges={opBillingResponse?.additionalhospitalcharges.toFixed(
+                  2
+                )}
+                IPR={opBillingResponse?.admissiondetails?.IPRNo}
+                relativename={opBillingResponse?.admissiondetails?.relativename}
+                relativephone={
+                  opBillingResponse?.admissiondetails?.relativephonenumber
+                }
+                relativerelation={
+                  opBillingResponse?.admissiondetails?.relativerelation
+                }
+                // relativephone={opBillingResponse?.admissiondetails?.relativephonenumber}
+                transactionid={opBillingResponse?.transactionid.toUpperCase()}
+                gstvalue={opBillingResponse?.gstvalue.toFixed(2)}
+                payable={opBillingResponse?.payable.toFixed(2)}
+                list={list}
+                invoiceNumber={opBillingResponse?.billno}
+                invoiceDate={new Date().toJSON().slice(0, 10)}
+                billername={username}
+              />
+              // </div>
+            )}
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

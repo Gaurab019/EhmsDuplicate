@@ -382,224 +382,239 @@ const CreateVisitIP = ({
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-3">
-      {" "}
-      <h1 className="NPR">In Patient Admission Form</h1>
-      <form
-        onSubmit={(e) => {
-          console.log("IP details Submit called");
-          e.preventDefault();
-          callValidationAndSubmit(e);
-        }}
-      >
-        <div>
-          <button
-            className={`button-81 text-center ${
-              count === 0 ? "button-active" : ""
-            }`}
-            type="button"
-            onClick={() => handleTabChange(0)}
-          >
-            Basic
-          </button>
-          <button
-            type="button"
-            className={`button-81 ${count === 1 ? "button-active" : ""}`}
-            onClick={() => handleTabChange(1)}
-          >
-            Bed
-          </button>
-          <button
-            type="button"
-            className={`button-81 ${count === 2 ? "button-active" : ""}`}
-            onClick={() => handleTabChange(2)}
-          >
-            Doctor
-          </button>
-          <button
-            type="button"
-            className={`button-81 ${count === 3 ? "button-active" : ""}`}
-            onClick={() => handleTabChange(3)}
-          >
-            Admission Preview
-          </button>
+    <div className="[height:100%] [width:100%] box-border overflow-y-scroll overflow-x-clip">
+      <h1 className="bg-[#f2ecff] text-[#04040c] h-24 flex items-center justify-start box-border p-5 rounded-l-xl ml-2 mt-2 mb-12 [width:100%]">
+        In Patient Admission Form
+      </h1>
+      <div className="Rece-flex-item-right">
+        <form
+          onSubmit={(e) => {
+            console.log("IP details Submit called");
+            e.preventDefault();
+            callValidationAndSubmit(e);
+          }}
+        >
+          <div>
+            <button
+              className={`button-81 text-center ${
+                count === 0 ? "button-active" : ""
+              }`}
+              type="button"
+              onClick={() => handleTabChange(0)}
+            >
+              Basic
+            </button>
+            <button
+              type="button"
+              className={`button-81 ${count === 1 ? "button-active" : ""}`}
+              onClick={() => handleTabChange(1)}
+            >
+              Bed
+            </button>
+            <button
+              type="button"
+              className={`button-81 ${count === 2 ? "button-active" : ""}`}
+              onClick={() => handleTabChange(2)}
+            >
+              Doctor
+            </button>
+            <button
+              type="button"
+              className={`button-81 ${count === 3 ? "button-active" : ""}`}
+              onClick={() => handleTabChange(3)}
+            >
+              Admission Preview
+            </button>
 
-          <div className="Rece-flex-container">
-            <div className="container-right">
-              <div className="patientDet">
-                {count === 0 && (
-                  <>
-                    {/* <PatientID
-                  setpatientdetails={setpatientdetails}
-                  searchPatient={searchPatient}
-                  BsSearch={BsSearch}
-                  triggerreset={triggerreset}
-                  needsearch={true}
-                  patientid={patientid}
-                  setpatientid={setpatientID}
-                /> */}
-                    <InPatientID
-                      needsearch={true}
-                      BsSearch={BsSearch}
-                      searchPatient={searchPatient}
-                    />
-                    <DisabledPatientName
-                      externalvalue={ippatientdetails?.patientname}
-                    />
-                    <GovtIDField
-                      govtdetailslist={inPatientCodes?.govtdetailslist}
-                      triggertoggle={triggertoggle}
-                      setTriggertoggle={setTriggertoggle}
-                      triggerreset={triggerreset}
-                    />
-                    <RelativeName />
-                    <RelativeRelation />
-                    <RelativePhoneNumber />
-                    <Address />
-                  </>
-                )}
-                {count === 1 && (
-                  <>
-                    <BedType
-                      beddetailslist={inPatientCodes?.beddetailslist}
-                      triggertoggle={triggertoggle}
-                      setTriggertoggle={setTriggertoggle}
-                      triggerreset={triggerreset}
-                    />
-                    <FloorNumber />
-                    <RoomNumber />
-                    <BedNumber />
-                  </>
-                )}
+            <div className="Rece-flex-container">
+              <div className="container-right">
+                <div className="patientDet">
+                  {count === 0 && (
+                    <>
+                      {/* <PatientID
+                    setpatientdetails={setpatientdetails}
+                    searchPatient={searchPatient}
+                    BsSearch={BsSearch}
+                    triggerreset={triggerreset}
+                    needsearch={true}
+                    patientid={patientid}
+                    setpatientid={setpatientID}
+                  /> */}
+                      <InPatientID
+                        needsearch={true}
+                        BsSearch={BsSearch}
+                        searchPatient={searchPatient}
+                      />
+                      <DisabledPatientName
+                        externalvalue={ippatientdetails?.patientname}
+                      />
+                      <GovtIDField
+                        govtdetailslist={inPatientCodes?.govtdetailslist}
+                        triggertoggle={triggertoggle}
+                        setTriggertoggle={setTriggertoggle}
+                        triggerreset={triggerreset}
+                      />
+                      <RelativeName />
+                      <RelativeRelation />
+                      <RelativePhoneNumber />
+                      <Address />
+                    </>
+                  )}
+                  {count === 1 && (
+                    <>
+                      <BedType
+                        beddetailslist={inPatientCodes?.beddetailslist}
+                        triggertoggle={triggertoggle}
+                        setTriggertoggle={setTriggertoggle}
+                        triggerreset={triggerreset}
+                      />
+                      <FloorNumber />
+                      <RoomNumber />
+                      <BedNumber />
+                    </>
+                  )}
 
-                {count === 2 && (
-                  <>
-                    <DeptID
-                      departmentdetails={inPatientCodes?.departmentsvalueslist}
-                      triggertoggle={triggertoggle}
-                      setTriggertoggle={setTriggertoggle}
-                      triggerreset={triggerreset}
-                    />
-                    <ConDoctor
-                      doctordetailslist={newddlist}
-                      triggertoggle={triggertoggle}
-                      setTriggertoggle={setTriggertoggle}
-                      triggerreset={triggerreset}
-                    />
-                  </>
-                )}
-                {count === 3 && (
-                  <div className="patient-details">
-                    {patientDetailsArray().map((detail, index) => (
-                      <div key={detail.label} className="detail-row">
-                        <div
-                          className={`left ${index % 2 === 0 ? "even" : "odd"}`}
-                        >
-                          <label className=" text-sm font-light">
-                            {detail.label}:
-                          </label>
+                  {count === 2 && (
+                    <>
+                      <DeptID
+                        departmentdetails={
+                          inPatientCodes?.departmentsvalueslist
+                        }
+                        triggertoggle={triggertoggle}
+                        setTriggertoggle={setTriggertoggle}
+                        triggerreset={triggerreset}
+                      />
+                      <ConDoctor
+                        doctordetailslist={newddlist}
+                        triggertoggle={triggertoggle}
+                        setTriggertoggle={setTriggertoggle}
+                        triggerreset={triggerreset}
+                      />
+                    </>
+                  )}
+                  {count === 3 && (
+                    <div className="patient-details">
+                      {patientDetailsArray().map((detail, index) => (
+                        <div key={detail.label} className="detail-row">
+                          <div
+                            className={`left ${
+                              index % 2 === 0 ? "even" : "odd"
+                            }`}
+                          >
+                            <label className=" text-sm font-light">
+                              {detail.label}:
+                            </label>
+                          </div>
+                          <div
+                            className={`right ${
+                              index % 2 === 0 ? "even" : "odd"
+                            }`}
+                          >
+                            <span className="font-semibold text-green-500">
+                              {detail.value}
+                            </span>
+                          </div>
                         </div>
-                        <div
-                          className={`right ${
-                            index % 2 === 0 ? "even" : "odd"
-                          }`}
-                        >
-                          <span className="font-semibold text-green-500">
-                            {detail.value}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <div className="flex flex-row justify-between items-center mt-2">
-                <button
-                  className="button-6 reset"
-                  type="button"
-                  onClick={
-                    () => {
-                      resetform();
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <div className="flex flex-row justify-between items-center mt-2">
+                  <button
+                    className="button-6 reset"
+                    type="button"
+                    onClick={
+                      () => {
+                        resetform();
+                      }
+                      // resetform
                     }
-                    // resetform
-                  }
-                >
-                  RESET
-                </button>
-                <div>
-                  {count > 0 && (
-                    <button onClick={PREV} type="button" className="button-6">
-                      Previous
-                    </button>
-                  )}
-                  {count < 3 ? (
-                    <button onClick={NEXT} type="button" className="button-6">
-                      Next
-                    </button>
-                  ) : (
-                    void 0
-                  )}
-                  {count >= 3 ? (
-                    <button
-                      type="submit"
-                      className="button-6"
-                      // onClick={callValidationAndSubmit}
-                    >
-                      Submit
-                    </button>
-                  ) : (
-                    void 0
-                  )}
+                  >
+                    RESET
+                  </button>
+                  <div>
+                    {count > 0 && (
+                      <button
+                        onClick={PREV}
+                        type="button"
+                        className="button-6 savesubmit"
+                      >
+                        Previous
+                      </button>
+                    )}
+                    {count < 3 ? (
+                      <button
+                        onClick={NEXT}
+                        type="button"
+                        className="button-6 savesubmit"
+                      >
+                        Next
+                      </button>
+                    ) : (
+                      void 0
+                    )}
+                    {count >= 3 ? (
+                      <button
+                        type="submit"
+                        className="primarysubmit button-6"
+                        // onClick={callValidationAndSubmit}
+                      >
+                        Submit
+                      </button>
+                    ) : (
+                      void 0
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </form>
-      {/* <div className="buttondiv">
-        <button
-          className="button-6 savesubmit"
-          onClick={callValidationAndSubmit}
-        >
-          CREATE VISIT
-        </button>
-      </div> */}
-      <CardDisplay
-        key={1}
-        data={carddetails}
-        CardHeader={"In Patient Admission Details"}
-        triggerPrint={() => setGenerateReport(true)}
-        displayprintbutton={true}
-        displayOPVisitbutton={false}
-        displayIPVisitbutton={false}
-        displayOPLabbutton={false}
-        displayradiobutton={false}
-        displayheader={true}
-      />
-      {generateReport && (
-        // <div className="flex BillDisplay">
-        <InvoiceGenerator
-          billername={username}
-          admissionReceipt={true}
-          IPR={admissionDetails[CardDetails.IPR]}
-          patientid={admissionDetails[CardDetails.PatientID]}
-          patientname={admissionDetails[CardDetails.Patient]}
-          sex={admissionDetails[CardDetails.Sex]}
-          doctorname={admissionDetails[CardDetails.Doctor]}
-          age={admissionDetails[CardDetails.Age]}
-          Address={admissionDetails[CardDetails.Address]}
-          relativename={admissionDetails[CardDetails.RelativeName]}
-          relativephone={admissionDetails[CardDetails.RelativePhone]}
-          relativerelation={admissionDetails[CardDetails.RelativeRelation]}
-          floorno={admissionDetails[CardDetails.FloorNo]}
-          bedno={admissionDetails[CardDetails.BedNo]}
-          roomno={admissionDetails[CardDetails.RoomNo]}
-          bedcategorytype={admissionDetails[CardDetails.BedCategoryName]}
-          departmentname={admissionDetails[CardDetails.DepartmentName]}
-          admissionDate={new Date().toJSON().slice(0, 10)}
+        </form>
+        {/* <div className="buttondiv">
+          <button
+            className="button-6 savesubmit"
+            onClick={callValidationAndSubmit}
+          >
+            CREATE VISIT
+          </button>
+        </div> */}
+        <CardDisplay
+          key={1}
+          data={carddetails}
+          CardHeader={"In Patient Admission Details"}
+          triggerPrint={() => setGenerateReport(true)}
+          displayprintbutton={true}
+          displayOPVisitbutton={false}
+          displayIPVisitbutton={false}
+          displayOPLabbutton={false}
+          displayradiobutton={false}
+          displayheader={true}
         />
-        // </div>
-      )}
+        {generateReport && (
+          // <div className="flex BillDisplay">
+          <InvoiceGenerator
+            billername={username}
+            admissionReceipt={true}
+            IPR={admissionDetails[CardDetails.IPR]}
+            patientid={admissionDetails[CardDetails.PatientID]}
+            patientname={admissionDetails[CardDetails.Patient]}
+            sex={admissionDetails[CardDetails.Sex]}
+            doctorname={admissionDetails[CardDetails.Doctor]}
+            age={admissionDetails[CardDetails.Age]}
+            Address={admissionDetails[CardDetails.Address]}
+            relativename={admissionDetails[CardDetails.RelativeName]}
+            relativephone={admissionDetails[CardDetails.RelativePhone]}
+            relativerelation={admissionDetails[CardDetails.RelativeRelation]}
+            floorno={admissionDetails[CardDetails.FloorNo]}
+            bedno={admissionDetails[CardDetails.BedNo]}
+            roomno={admissionDetails[CardDetails.RoomNo]}
+            bedcategorytype={admissionDetails[CardDetails.BedCategoryName]}
+            departmentname={admissionDetails[CardDetails.DepartmentName]}
+            admissionDate={new Date().toJSON().slice(0, 10)}
+          />
+          // </div>
+        )}
+      </div>
     </div>
   );
 };

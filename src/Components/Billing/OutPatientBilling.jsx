@@ -405,54 +405,46 @@ function OutPatientBilling(props) {
   };
 
   return (
-    <div>
-      {" "}
-      <h1 className="NPR">Create Lab Billing </h1>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          callValidationAndSubmit(e);
-        }}
-      >
-        {!generateReport && !preview && (
-          <div className="Rece-flex-container">
-            <div className="container-right">
-              <div className="patientDet">
-                <PatientID
-                  setpatientdetails={setpatientdetails}
-                  searchPatient={searchPatient}
-                  BsSearch={BsSearch}
-                  triggerreset={triggerreset}
-                  needsearch={true}
-                  patientid={patientid}
-                  setpatientid={setpatientID}
-                />
-                <DisabledPatientName
-                  externalvalue={searchPatientResult.patientname}
-                  triggerreset={triggerreset}
-                />
-                {/* <div className="fieldRow">
-                <span className="patHeading">Patient Name</span>
-                 <span className="sgittar">*</span>
-                <input
-                  type="text"
-                  className="RecInp"
-                  value={searchPatientResult.patientname}
-                  readOnly
-                />
-                <span contentEditable="true" style={spanStyle}>{searchPatientResult.patientname}</span>
-              </div> */}
-                {/* <ConsultingDoctor
-                searchDoc={searchDoc}
-                selectedoption={patientdetails.patientdetails?.doctorname}
-                setsearchDoc={setsearchDoc}
-                setSelectedOption={setSelectedOption}
-                newddlist={props.newddlist}
-                triggertoggle={props.triggertoggle}
-                triggerreset={triggerreset}
-                setTriggertoggle={props.setTriggertoggle}
-              /> */}
-                <DoctorListInBilling
+    <div className="[height:100%] [width:100%] overflow-y-scroll overflow-x-clip">
+      <h1 className="bg-[#f2ecff] text-[#04040c] h-24 flex items-center justify-start box-border p-5 rounded-l-xl ml-2 mt-2 mb-12 [width:100%]">
+        Create Lab Billing{" "}
+      </h1>
+      <div className="Rece-flex-item-right">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            callValidationAndSubmit(e);
+          }}
+        >
+          {!generateReport && !preview && (
+            <div className="Rece-flex-container">
+              <div className="container-right">
+                <div className="patientDet">
+                  <PatientID
+                    setpatientdetails={setpatientdetails}
+                    searchPatient={searchPatient}
+                    BsSearch={BsSearch}
+                    triggerreset={triggerreset}
+                    needsearch={true}
+                    patientid={patientid}
+                    setpatientid={setpatientID}
+                  />
+                  <DisabledPatientName
+                    externalvalue={searchPatientResult.patientname}
+                    triggerreset={triggerreset}
+                  />
+                  {/* <div className="fieldRow">
+                  <span className="patHeading">Patient Name</span>
+                   <span className="sgittar">*</span>
+                  <input
+                    type="text"
+                    className="RecInp"
+                    value={searchPatientResult.patientname}
+                    readOnly
+                  />
+                  <span contentEditable="true" style={spanStyle}>{searchPatientResult.patientname}</span>
+                </div> */}
+                  {/* <ConsultingDoctor
                   searchDoc={searchDoc}
                   selectedoption={patientdetails.patientdetails?.doctorname}
                   setsearchDoc={setsearchDoc}
@@ -461,188 +453,203 @@ function OutPatientBilling(props) {
                   triggertoggle={props.triggertoggle}
                   triggerreset={triggerreset}
                   setTriggertoggle={props.setTriggertoggle}
-                />
-                <PaymentType
-                  setpatientdetails={setpatientdetails}
-                  triggerreset={triggerreset}
-                  externalvalue={
-                    patientdetails.patientdetails?.transactionid
-                      ? patientdetails.patientdetails?.transactionid
-                      : ""
-                  }
-                />
-                {showRegistrationBanner && (
-                  <div className="text-red-500 text-sm">
-                    * Registration Charges will be added for this patient in
-                    final bill
-                  </div>
-                )}
-
-                <div className="flex justify-center items-center gap-2 flex-col">
-                  {labItems?.map((lab, index) => (
-                    <div
-                      key={index}
-                      className="flex flex-row gap-3 items-center justify-center "
-                    >
-                      <div className="flex justify-start items-center gap-2">
-                        <span className="patHeading">Lab Item</span>
-                        <span className="text-red-500">*</span>
-                        <select
-                          required
-                          className="w-80 h-8"
-                          value={lab.labItem}
-                          onChange={(e) =>
-                            handleInputChange(index, "labItem", e.target.value)
-                          }
-                        >
-                          <option value="">Select Lab Item</option>
-                          {props.billChargesTable?.map((item) => (
-                            <option
-                              key={item.serviceid}
-                              value={item.servicename}
-                            >
-                              {item.servicename.concat(" - Rs ", item.cost)}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                      {/* <div className="flex justify-center items-center  gap-1">
-
-                        <span className="patHeading">Qty</span>
-                        <span className="text-red-500">*</span>
-                        <input
-                          type="number"
-                          className="w-10 h-8"
-                          placeholder="No of Item"
-                          value={lab.noOfItem}
-                          onChange={(e) => {
-                            if (e.target.value < 999 && e.target.value >= 0) {
-                              if (e.target.value.length == 0) {
-                                handleInputChange(
-                                  index,
-                                  "noOfItem",
-                                  e.target.value
-                                );
-                              } else if (e.target.value > 0) {
-                                handleInputChange(
-                                  index,
-                                  "noOfItem",
-                                  e.target.value
-                                );
-                              }
-                            }
-                          }}
-                        />
-                        </div> */}
-                      <input type="hidden" value={lab.serviceid} />
-                      <button
-                        type="button"
-                        className="delete-btn"
-                        onClick={() => handleDeleteLabItem(index)}
-                      >
-                        Delete
-                      </button>
+                /> */}
+                  <DoctorListInBilling
+                    searchDoc={searchDoc}
+                    selectedoption={patientdetails.patientdetails?.doctorname}
+                    setsearchDoc={setsearchDoc}
+                    setSelectedOption={setSelectedOption}
+                    newddlist={props.newddlist}
+                    triggertoggle={props.triggertoggle}
+                    triggerreset={triggerreset}
+                    setTriggertoggle={props.setTriggertoggle}
+                  />
+                  <PaymentType
+                    setpatientdetails={setpatientdetails}
+                    triggerreset={triggerreset}
+                    externalvalue={
+                      patientdetails.patientdetails?.transactionid
+                        ? patientdetails.patientdetails?.transactionid
+                        : ""
+                    }
+                  />
+                  {showRegistrationBanner && (
+                    <div className="text-red-500 text-sm">
+                      * Registration Charges will be added for this patient in
+                      final bill
                     </div>
-                  ))}
+                  )}
 
-                  <button
-                    className="add-btn"
-                    onClick={handleAddLabItem}
-                    type="button"
-                  >
-                    Add Lab Item
-                  </button>
+                  <div className="flex justify-center items-center gap-2 flex-col">
+                    {labItems?.map((lab, index) => (
+                      <div
+                        key={index}
+                        className="flex flex-row gap-3 items-center justify-center "
+                      >
+                        <div className="flex justify-start items-center gap-2">
+                          <span className="patHeading">Lab Item</span>
+                          <span className="text-red-500">*</span>
+                          <select
+                            required
+                            className="w-80 h-8"
+                            value={lab.labItem}
+                            onChange={(e) =>
+                              handleInputChange(
+                                index,
+                                "labItem",
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option value="">Select Lab Item</option>
+                            {props.billChargesTable?.map((item) => (
+                              <option
+                                key={item.serviceid}
+                                value={item.servicename}
+                              >
+                                {item.servicename.concat(" - Rs ", item.cost)}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        {/* <div className="flex justify-center items-center  gap-1">
+  
+                          <span className="patHeading">Qty</span>
+                          <span className="text-red-500">*</span>
+                          <input
+                            type="number"
+                            className="w-10 h-8"
+                            placeholder="No of Item"
+                            value={lab.noOfItem}
+                            onChange={(e) => {
+                              if (e.target.value < 999 && e.target.value >= 0) {
+                                if (e.target.value.length == 0) {
+                                  handleInputChange(
+                                    index,
+                                    "noOfItem",
+                                    e.target.value
+                                  );
+                                } else if (e.target.value > 0) {
+                                  handleInputChange(
+                                    index,
+                                    "noOfItem",
+                                    e.target.value
+                                  );
+                                }
+                              }
+                            }}
+                          />
+                          </div> */}
+                        <input type="hidden" value={lab.serviceid} />
+                        <button
+                          type="button"
+                          className="delete-btn"
+                          onClick={() => handleDeleteLabItem(index)}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    ))}
+
+                    <button
+                      className="add-btn"
+                      onClick={handleAddLabItem}
+                      type="button"
+                    >
+                      Add Lab Item
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
-        <div className="flex flex-col justify-center items-center xl:flex-row">
-          <div>
-            {preview && (
-              <div>
-                <JsonPreview
-                  setJsonData={setJsonData}
-                  jsonData={jsonData}
-                  removeDeleteBtn={removeDeleteBtn}
-                  handleDeleteLabItem={handleDeleteLabItem}
-                />
-              </div>
-            )}
-            <div className="buttondiv">
-              {!generateReport && !preview && (
-                <button
-                  class="button-6 savesubmit"
-                  onClick={resetform}
-                  type="button"
-                >
-                  Reset
-                </button>
-              )}
-              {preview && (
-                <button
-                  class="button-6 savesubmit"
-                  type="button"
-                  onClick={() => {
-                    setPreview(false);
-                    setGenerateReport(false);
-                    setRemoveDeleteBtn(false);
-                  }}
-                >
-                  Back
-                </button>
-              )}
-              {!generateReport && !preview && (
-                <button
-                  class="button-6 savesubmit"
-                  onClick={previewFormData}
-                  type="button"
-                >
-                  Preview
-                </button>
-              )}
-              {preview && !generateReport && (
-                <button
-                  class="button-6 savesubmit"
-                  // onClick={callValidationAndSubmit}
-                  type="submit"
-                  // disabled={generateReport}
-                >
-                  SUBMIT
-                </button>
-              )}
-              {/* {generateReport && (
-              <button class="button-6 savesubmit" onClick={callDownloadReport}>
-                Download
-              </button>
-            )} */}
-            </div>
-          </div>
-          {generateReport && (
-            // <div className="flex BillDisplay">
-            <InvoiceGenerator
-              patientid={opBillingResponse?.patientid}
-              patientname={opBillingResponse?.opdetails.Patientname}
-              sex={opBillingResponse?.opdetails.Sex}
-              doctorname={opBillingResponse?.opdetails.ConsultingDoctor}
-              age={opBillingResponse?.opdetails.Age + variables.agesuffix}
-              phonenumber={opBillingResponse?.opdetails.Phonenumber}
-              totalmrp={opBillingResponse?.mrp.toFixed(2)}
-              additionalhospitalcharges={opBillingResponse?.additionalhospitalcharges.toFixed(
-                2
-              )}
-              transactionid={opBillingResponse?.transactionid.toUpperCase()}
-              gstvalue={opBillingResponse?.gstvalue.toFixed(2)}
-              payable={opBillingResponse?.payable.toFixed(2)}
-              list={list}
-              invoiceNumber={opBillingResponse?.billno}
-              invoiceDate={new Date().toJSON().slice(0, 10)}
-              billername={username}
-            />
-            // </div>
           )}
-        </div>
-      </form>
+          <div className="flex flex-col justify-center items-center xl:flex-row">
+            <div>
+              {preview && (
+                <div>
+                  <JsonPreview
+                    setJsonData={setJsonData}
+                    jsonData={jsonData}
+                    removeDeleteBtn={removeDeleteBtn}
+                    handleDeleteLabItem={handleDeleteLabItem}
+                  />
+                </div>
+              )}
+              <div className="buttondiv">
+                {!generateReport && !preview && (
+                  <button
+                    class="button-6 savesubmit"
+                    onClick={resetform}
+                    type="button"
+                  >
+                    Reset
+                  </button>
+                )}
+                {preview && (
+                  <button
+                    class="button-6 savesubmit"
+                    type="button"
+                    onClick={() => {
+                      setPreview(false);
+                      setGenerateReport(false);
+                      setRemoveDeleteBtn(false);
+                    }}
+                  >
+                    Back
+                  </button>
+                )}
+                {!generateReport && !preview && (
+                  <button
+                    class="button-6 savesubmit"
+                    onClick={previewFormData}
+                    type="button"
+                  >
+                    Preview
+                  </button>
+                )}
+                {preview && !generateReport && (
+                  <button
+                    class="button-6 savesubmit"
+                    // onClick={callValidationAndSubmit}
+                    type="submit"
+                    // disabled={generateReport}
+                  >
+                    SUBMIT
+                  </button>
+                )}
+                {/* {generateReport && (
+                <button class="button-6 savesubmit" onClick={callDownloadReport}>
+                  Download
+                </button>
+              )} */}
+              </div>
+            </div>
+            {generateReport && (
+              // <div className="flex BillDisplay">
+              <InvoiceGenerator
+                patientid={opBillingResponse?.patientid}
+                patientname={opBillingResponse?.opdetails.Patientname}
+                sex={opBillingResponse?.opdetails.Sex}
+                doctorname={opBillingResponse?.opdetails.ConsultingDoctor}
+                age={opBillingResponse?.opdetails.Age + variables.agesuffix}
+                phonenumber={opBillingResponse?.opdetails.Phonenumber}
+                totalmrp={opBillingResponse?.mrp.toFixed(2)}
+                additionalhospitalcharges={opBillingResponse?.additionalhospitalcharges.toFixed(
+                  2
+                )}
+                transactionid={opBillingResponse?.transactionid.toUpperCase()}
+                gstvalue={opBillingResponse?.gstvalue.toFixed(2)}
+                payable={opBillingResponse?.payable.toFixed(2)}
+                list={list}
+                invoiceNumber={opBillingResponse?.billno}
+                invoiceDate={new Date().toJSON().slice(0, 10)}
+                billername={username}
+              />
+              // </div>
+            )}
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import "../../Pages/Reception/Reception.css";
 function CreateBIllingButtons(props) {
   // console.log("CreateBIllingButtons: ",props)
   return (
-    <div>
+    <div className="[height:100%] [width:100%]">
       <Routes>
         <Route
           path="/OP"

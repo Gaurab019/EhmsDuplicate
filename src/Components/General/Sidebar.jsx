@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-function Sidebar({ Info1, Info2, parentPath }) {
+function Sidebar({ Info1, Info2, parentPath, logout }) {
   const location = useLocation();
   const [toggle, setToggle] = useState(false);
   const [toggle2, setToggle2] = useState(false);
@@ -14,32 +14,48 @@ function Sidebar({ Info1, Info2, parentPath }) {
     // console.log(toggle2);
   };
 
-  const activeStyle = "bg-white mb-2 mt-2 box-content border-solid rounded-md";
+  const baseTextColor = "text-[#b7b7f2]";
+  const activeStyle =
+    "bg-[#77ffab] mb-2 mt-2 box-content border-solid rounded-md text-[#130b1f]  font-semibold ";
   return (
-    <>
-      <div>
+    <div className="[height:100vh] fixed  min-w-[20vw] xl:min-w-[15vw] left-0 top-0 bg-[#17181a] flex flex-col items-center justify-center">
+      <div className="[flex:20%] [width:100%] flex flex-col justify-center gap-2 items-center box-border">
         <img src={Info1.imgURL} alt="ImageMissing" className="ReceptionImage" />
         <br />
-        <div className="receptionWord">{Info1.Title}</div>
+        <div className="text-[#fafafa]">{Info1.Title}</div>
       </div>
-      <div className="flex flex-col ml-2 mr-2 sidebarOptions">
-        {Object.entries(Info2).map(([key, value]) => (
-          <div key={key} className="flex flex-col items-start">
-            <Link
-              to={`${key}`}
-              className={`mb-1 text-[#5e17eb] ${
-                location.pathname === `${parentPath}/${key}` ? activeStyle : ""
-              }`}
-            >
-              {value}
-            </Link>
-          </div>
-        ))}
+      <div className="flex flex-col pl-6 pr-2 [flex:60%] [width:100%] text-xl gap-4 box-border">
+        <div className="flex flex-col items-start ">
+          <Link
+            onClick={TOG}
+            to="/reception/newPatient"
+            className={`mb-1 ${baseTextColor}  ${
+              location.pathname === `${parentPath}/newPatient`
+                ? `${activeStyle} pl-4 pr-4 pt-2 pb-2 `
+                : ""
+            }`}
+          >
+            Registration
+          </Link>
+        </div>
+        <div className="flex flex-col items-start">
+          <Link
+            onClick={TOG}
+            to="/reception/Search"
+            className={`mb-1 ${baseTextColor} ${
+              location.pathname === `${parentPath}/Search`
+                ? `${activeStyle} pl-4 pr-4 pt-2 pb-2`
+                : ""
+            }`}
+          >
+            Search
+          </Link>
+        </div>
         <div className="flex flex-col items-start">
           <Link
             onClick={TOG}
             to="/reception/createvisit/OP"
-            className={`mb-1 text-[#5e17eb] `}
+            className={`mb-1 ${baseTextColor} `}
           >
             Create Visit
           </Link>
@@ -48,9 +64,9 @@ function Sidebar({ Info1, Info2, parentPath }) {
         {(location.pathname === "/reception/createvisit" ||
           location.pathname === "/reception/createvisit/OP" ||
           location.pathname === "/reception/createvisit/IP") && (
-          <div className="optt flex flex-col">
+          <div className="text-lg flex flex-col">
             <Link
-              className={`options option p-0 ml-5  ${
+              className={`text-center p-2 ml-5 ${baseTextColor} ${
                 location.pathname === "/reception/createvisit/OP"
                   ? activeStyle
                   : ""
@@ -60,7 +76,7 @@ function Sidebar({ Info1, Info2, parentPath }) {
               Create Visit OP
             </Link>
             <Link
-              className={`options option p-0 ml-5  ${
+              className={`text-center p-2 ml-5 ${baseTextColor}  ${
                 location.pathname === "/reception/createvisit/IP"
                   ? activeStyle
                   : ""
@@ -76,7 +92,7 @@ function Sidebar({ Info1, Info2, parentPath }) {
           <Link
             onClick={TOG}
             to="/reception/createinvoice/OP"
-            className={`mb-1 text-[#5e17eb] `}
+            className={`mb-1 ${baseTextColor} `}
           >
             Billing
           </Link>
@@ -84,9 +100,9 @@ function Sidebar({ Info1, Info2, parentPath }) {
         {(location.pathname === "/reception/createinvoice" ||
           location.pathname === "/reception/createinvoice/OP" ||
           location.pathname === "/reception/createinvoice/IP") && (
-          <div className="optt flex flex-col">
+          <div className="text-lg flex flex-col">
             <Link
-              className={`options option  p-0 ml-5  ${
+              className={`text-center p-2  ml-5 ${baseTextColor} ${
                 location.pathname === "/reception/createinvoice/OP"
                   ? activeStyle
                   : ""
@@ -96,7 +112,7 @@ function Sidebar({ Info1, Info2, parentPath }) {
               Billing OP
             </Link>
             <Link
-              className={`options option  p-0 ml-5  ${
+              className={`text-center p-2  ml-5 ${baseTextColor} ${
                 location.pathname === "/reception/createinvoice/IP"
                   ? activeStyle
                   : ""
@@ -108,7 +124,13 @@ function Sidebar({ Info1, Info2, parentPath }) {
           </div>
         )}
       </div>
-    </>
+      <button
+        className="[height:5%] [width:80%] mb-5 bg-white border-2 border-amber-300 rounded-md"
+        onClick={logout}
+      >
+        Logout
+      </button>
+    </div>
   );
 }
 

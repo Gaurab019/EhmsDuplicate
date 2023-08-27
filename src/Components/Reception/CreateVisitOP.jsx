@@ -294,120 +294,124 @@ const CreateVisitOP = ({
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="[height:100%] [width:100%]  box-border overflow-y-scroll overflow-x-clip">
       {" "}
-      <h1 className="NPR">Patient Visit Create OP</h1>
-      <form onSubmit={(e) => callValidationAndSubmit(e)}>
-        <div className="Rece-flex-container">
-          <div className="container-right">
-            <div className="patientDet">
-              <PatientID
-                setpatientdetails={setpatientdetails}
-                searchPatient={searchPatient}
-                BsSearch={BsSearch}
-                triggerreset={triggerreset}
-                needsearch={true}
-                patientid={patientid}
-                setpatientid={setpatientID}
-              />
-              <DisabledPatientName
-                externalvalue={patientdetails.patientdetails?.patientname}
-              />
-              <ConsultingDoctor
-                searchDoc={searchDoc}
-                setsearchDoc={setsearchDoc}
-                setSelectedOption={setSelectedOption}
-                newddlist={newddlist}
-                triggertoggle={triggertoggle}
-                triggerreset={triggerreset}
-                setTriggertoggle={setTriggertoggle}
-                manualEntryTrigger={manualEntryTrigger}
-                setmanualEntryTrigger={setmanualEntryTrigger}
-                showmanualentrytrigger={true}
-              />
-              {/* <FormDetails InputFields={InputFields} />{" "} */}
-              {manualEntryTrigger ? (
-                <ManualAmount
+      <h1 className="bg-[#f2ecff] text-[#04040c] h-24 flex items-center justify-start box-border p-5 rounded-l-xl ml-2 mt-2 mb-12 [width:100%]">
+        Patient Visit Create OP
+      </h1>
+      <div className="Rece-flex-item-right">
+        <form onSubmit={(e) => callValidationAndSubmit(e)}>
+          <div className="Rece-flex-container">
+            <div className="container-right">
+              <div className="patientDet">
+                <PatientID
+                  setpatientdetails={setpatientdetails}
+                  searchPatient={searchPatient}
+                  BsSearch={BsSearch}
+                  triggerreset={triggerreset}
+                  needsearch={true}
+                  patientid={patientid}
+                  setpatientid={setpatientID}
+                />
+                <DisabledPatientName
+                  externalvalue={patientdetails.patientdetails?.patientname}
+                />
+                <ConsultingDoctor
+                  searchDoc={searchDoc}
+                  setsearchDoc={setsearchDoc}
+                  setSelectedOption={setSelectedOption}
+                  newddlist={newddlist}
+                  triggertoggle={triggertoggle}
+                  triggerreset={triggerreset}
+                  setTriggertoggle={setTriggertoggle}
+                  manualEntryTrigger={manualEntryTrigger}
+                  setmanualEntryTrigger={setmanualEntryTrigger}
+                  showmanualentrytrigger={true}
+                />
+                {/* <FormDetails InputFields={InputFields} />{" "} */}
+                {manualEntryTrigger ? (
+                  <ManualAmount
+                    setpatientdetails={setpatientdetails}
+                    triggerreset={triggerreset}
+                  />
+                ) : (
+                  <Amount
+                    setpatientdetails={setpatientdetails}
+                    triggerreset={triggerreset}
+                    externalvalue={
+                      _.isUndefined(patientdetails.patientdetails?.charges)
+                        ? 0
+                        : patientdetails.patientdetails?.charges
+                    }
+                  />
+                )}
+                <PaymentType
                   setpatientdetails={setpatientdetails}
                   triggerreset={triggerreset}
                 />
-              ) : (
-                <Amount
-                  setpatientdetails={setpatientdetails}
-                  triggerreset={triggerreset}
-                  externalvalue={
-                    _.isUndefined(patientdetails.patientdetails?.charges)
-                      ? 0
-                      : patientdetails.patientdetails?.charges
-                  }
-                />
-              )}
-              <PaymentType
-                setpatientdetails={setpatientdetails}
-                triggerreset={triggerreset}
-              />
-              {showRegistrationBanner && (
-                <div className="text-red-500 text-sm">
-                  * Registration Charges will be added for this patient in final
-                  bill
-                </div>
-              )}
+                {showRegistrationBanner && (
+                  <div className="text-red-500 text-sm">
+                    * Registration Charges will be added for this patient in
+                    final bill
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="buttondiv">
-          <button
-            type="submit"
-            className="button-6 savesubmit"
-            disabled = {generateReport}
-            // onClick={callValidationAndSubmit}
-          >
-            CREATE VISIT
-          </button>
-          <button
-            className="button-6 savesubmit"
-            onClick={resetform}
-            type="button"
-          >
-            RESET
-          </button>
-        </div>
-      </form>
-      <CardDisplay
-        key={1}
-        data={carddetails}
-        CardHeader={"Patient Visit Details"}
-        triggerPrint={() => setGenerateReport(true)}
-        displayprintbutton={true}
-        displayOPVisitbutton={false}
-        displayIPVisitbutton={false}
-        displayOPLabbutton={false}
-        displayradiobutton={false}
-        displayheader={true}
-      />
-      {generateReport && (
-        // <div className="flex BillDisplay">
-        <InvoiceGenerator
-          patientid={opBillingResponse?.patientid}
-          patientname={opBillingResponse?.opdetails.Patientname}
-          sex={opBillingResponse?.opdetails.Sex}
-          doctorname={opBillingResponse?.opdetails.ConsultingDoctor}
-          age={opBillingResponse?.opdetails.Age + variables.agesuffix}
-          phonenumber={opBillingResponse?.opdetails.Phonenumber}
-          totalmrp={opBillingResponse?.mrp.toFixed(2)}
-          additionalhospitalcharges={opBillingResponse?.additionalhospitalcharges.toFixed(
-            2
-          )}
-          transactionid={opBillingResponse?.transactionid.toUpperCase()}
-          gstvalue={opBillingResponse?.gstvalue.toFixed(2)}
-          payable={opBillingResponse?.payable.toFixed(2)}
-          list={list}
-          invoiceNumber={opBillingResponse?.billno}
-          invoiceDate={new Date().toJSON().slice(0, 10)}
-          billername={username}
+          <div className="buttondiv">
+            <button
+              type="submit"
+              className="button-6 savesubmit"
+              disabled={generateReport}
+              // onClick={callValidationAndSubmit}
+            >
+              CREATE VISIT
+            </button>
+            <button
+              className="button-6 savesubmit"
+              onClick={resetform}
+              type="button"
+            >
+              RESET
+            </button>
+          </div>
+        </form>
+        <CardDisplay
+          key={1}
+          data={carddetails}
+          CardHeader={"Patient Visit Details"}
+          triggerPrint={() => setGenerateReport(true)}
+          displayprintbutton={true}
+          displayOPVisitbutton={false}
+          displayIPVisitbutton={false}
+          displayOPLabbutton={false}
+          displayradiobutton={false}
+          displayheader={true}
         />
-        // </div>
-      )}
+        {generateReport && (
+          // <div className="flex BillDisplay">
+          <InvoiceGenerator
+            patientid={opBillingResponse?.patientid}
+            patientname={opBillingResponse?.opdetails.Patientname}
+            sex={opBillingResponse?.opdetails.Sex}
+            doctorname={opBillingResponse?.opdetails.ConsultingDoctor}
+            age={opBillingResponse?.opdetails.Age + variables.agesuffix}
+            phonenumber={opBillingResponse?.opdetails.Phonenumber}
+            totalmrp={opBillingResponse?.mrp.toFixed(2)}
+            additionalhospitalcharges={opBillingResponse?.additionalhospitalcharges.toFixed(
+              2
+            )}
+            transactionid={opBillingResponse?.transactionid.toUpperCase()}
+            gstvalue={opBillingResponse?.gstvalue.toFixed(2)}
+            payable={opBillingResponse?.payable.toFixed(2)}
+            list={list}
+            invoiceNumber={opBillingResponse?.billno}
+            invoiceDate={new Date().toJSON().slice(0, 10)}
+            billername={username}
+          />
+          // </div>
+        )}
+      </div>
     </div>
   );
 };

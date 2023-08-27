@@ -1,11 +1,6 @@
 body {
   /* background-image: url("\\Images\\bg.webp"); */
-  background-image: url("./Images/bg.webp");
-  /* background-size: 100vw 100vh; */
-  /* background-size: 300vw 300vh; */
-  /* min-width: 800px;
-  min-height: 600px; */
-  background-size: cover;
+
   font-size: 20px;
 }
 
@@ -98,6 +93,15 @@ input[type="number"] {
   justify-content: center;
   align-items: center;
   gap: 50px;
+}
+
+.primarysubmit {
+  /* background-color: orange; */
+  color: white;
+  /* border: px solid orange;    */
+  background-color: rgba(0, 167, 162, 0.4);
+  /* font-size: large;
+  margin-left: 25%;*/
 }
 
 .button-6 {

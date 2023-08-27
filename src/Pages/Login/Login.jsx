@@ -64,14 +64,14 @@ function App() {
     }
   }, [trigger]);
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-sm">
+    <div className="login-container">
+      <div className="row  flex gap-1 justify-evenly [height:100%] [width:100%]">
+        <div className="flex flex-col justify-start  [height:100%] [width:100%]">
           <span className="wttfo">Welcome to the future of </span>
           <span className="ehms">E-HMS!</span>
           <LottieAnimation />
         </div>
-        <div className="col-sm">
+        <div className="flex flex-col  [height:100%] [width:100%]">
           <div className="Right">
             <h3 className="ltd">LOGIN TO DASHBOARD</h3>
             {/* <input

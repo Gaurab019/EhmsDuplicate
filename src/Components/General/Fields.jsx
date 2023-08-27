@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useIPDetailsStore } from "../../store/store";
 import { usePatientIDStore } from "../../store/store";
-import { useBootstrapPrefix } from "react-bootstrap/esm/ThemeProvider";
+// import { useBootstrapPrefix } from "react-bootstrap/esm/ThemeProvider";
 import variables from "../../models/variables.json";
 var _ = require("lodash");
 
@@ -36,7 +36,6 @@ export const NameField = ({
         namevalue: inputValue.trim(),
       },
     }));
-
   };
 
   useEffect(() => {
@@ -176,8 +175,6 @@ export const Age = ({ triggerreset, setpatientdetails }) => {
 export const Sex = ({ triggerreset, setpatientdetails }) => {
   const [value, setValue] = useState("");
 
-
-
   useEffect(() => {
     setValue("");
   }, [triggerreset]);
@@ -199,7 +196,6 @@ export const Sex = ({ triggerreset, setpatientdetails }) => {
       <span className="star">*</span>
       <div className="flex justify-center items-center">
         <label className="RecInpButton m-0 flex items-center justify-start ">
-
           <input
             type="radio"
             name="sex"
@@ -209,8 +205,6 @@ export const Sex = ({ triggerreset, setpatientdetails }) => {
           />
           Male
         </label>
-
-
 
         <label className="RecInpButton m-0 flex items-center justify-start ">
           <input
@@ -223,7 +217,6 @@ export const Sex = ({ triggerreset, setpatientdetails }) => {
           Female
         </label>
         <label className="RecInpButton m-0 flex items-center justify-start">
-
           <input
             type="radio"
             name="sex"
@@ -467,7 +460,7 @@ export const ManualAmount = ({ triggerreset, setpatientdetails }) => {
         value={value}
         className="RecInp"
         placeholder="Amount Payable"
-        min="0.01" 
+        min="0.01"
         step="0.01"
         onChange={(e) => {
           if (!isNaN(e.target.value)) {

@@ -11,7 +11,7 @@ function CreateVisitButtons({
   inPatientCodes,
 }) {
   return (
-    <div>
+    <div className="[height:100%] [width:100%]">
       <Routes>
         <Route
           path="/OP"
