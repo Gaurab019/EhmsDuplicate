@@ -51,12 +51,12 @@ function App() {
       setErrorToast(httpcode);
     } else {
       toastSuccessStatus("Login Successful");
-
+      console.log(role);
       if (role === "Lab") {
         navigate("/lab/catalogitems", {
           replace: true,
         });
-      } else if (role === "Reception") {
+      } else if (role === "Reception" || role === "Admin") {
         navigate("/reception/newPatient", {
           replace: true,
         });
@@ -65,13 +65,16 @@ function App() {
   }, [trigger]);
   return (
     <div className="login-container">
-      <div className="row  flex gap-1 justify-evenly [height:100%] [width:100%]">
-        <div className="flex flex-col justify-start  [height:100%] [width:100%]">
-          <span className="wttfo">Welcome to the future of </span>
+      <div className="row  flex flex-col gap-1 justify-evenly [height:100%] [width:100%] md:flex-row">
+        <div className="flex flex-col  [height:100%] [width:100%] md:justify-start items-center box-border [flex:30%] md:[flex:50%] justify-center">
+          <span className="hidden md:mt-80 md:flex text-5xl text-center">
+            Welcome to the future of{" "}
+          </span>
           <span className="ehms">E-HMS!</span>
+          <span className="text-[#36454f] text-6xl md:hidden">Login</span>
           <LottieAnimation />
         </div>
-        <div className="flex flex-col  [height:100%] [width:100%]">
+        <div className="flex flex-col  [height:100%] [width:100%] md:justify-center items-center md:[flex:50%] [flex:70%] justify-normal">
           <div className="Right">
             <h3 className="ltd">LOGIN TO DASHBOARD</h3>
             {/* <input

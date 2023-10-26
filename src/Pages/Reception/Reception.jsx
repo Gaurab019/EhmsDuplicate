@@ -19,6 +19,7 @@ import { useInPatientCodeStore } from "../../store/store";
 // import CrateIPOP from "../../Components/Reception/CreateIPOP";
 import CreateVisitButtons from "../../Components/Reception/CreateVisitButtons";
 import CreateBIllingButtons from "../../Components/Billing/CreateBIllingButtons";
+import AdminPanel from "../../Components/Admin/AdminPanel";
 var _ = require("lodash");
 
 function Reception() {
@@ -265,9 +266,9 @@ function Reception() {
   }, [token]);
 
   useEffect(() => {
-    if (_.isNull(token) || _.isUndefined(token) || token == "") {
+    if (_.isNull(token) || _.isUndefined(token) || token === "") {
     } else {
-      if (username == "" || password == "") {
+      if (username === "" || password === "") {
         setToken("");
       } else {
         // console.log("data update called from trigger toggle section");
@@ -287,7 +288,7 @@ function Reception() {
   // );
   // billChargesTable
   return (
-    <div className="flex justify-between items-center [width:100vw] [height:100vh] bg-[#f9f9f9]">
+    <div className="flex justify-between items-center [width:100vw] [height:100vh] bg-[#ffffff]">
       <div className="flex flex-col box-border [height:100vh] relative min-w-[20vw] xl:min-w-[15vw]">
         <SideBar
           Info1={SideBarInfo1}
@@ -337,17 +338,17 @@ function Reception() {
               />
             }
           />
-          {/* <Route
-            path="createinvoice/*"
+          <Route
+            path="adminpanel/*"
             element={
-              <CreateInvoice
+              <AdminPanel
                 newddlist={newddlist}
                 triggertoggle={triggertoggle}
                 setTriggertoggle={setTriggertoggle}
-                labchargesdata={billChargesTableLab}
+                billChargesTable={billChargesTable}
               />
             }
-          /> */}
+          />
           {/* <Route path="createinvoice/*" render={(props) => <CreateInvoice {...props} data={newddlist}/>} /> */}
         </Routes>
       </div>

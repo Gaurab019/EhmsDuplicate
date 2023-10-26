@@ -29,6 +29,7 @@ function App() {
           {/* <Route path="/testRoute" element={<Test />} /> */}
           <Route path="/reception/*" element={<Reception />} />
           <Route path="/lab/*" element={<Lab />} />
+          {/* <Route path="/admin/*" element={<Lab />} /> */}
           {/* <Route path="/search" element={<Search />} />
           <Route path="/createvisit" element={<CreateVisit />} />
           <Route path="/createinvoice" element={<CreateInvoice />} />

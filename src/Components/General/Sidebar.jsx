@@ -29,11 +29,11 @@ function Sidebar({ Info1, Info2, parentPath, logout }) {
           <Link
             onClick={TOG}
             to="/reception/newPatient"
-            className={`mb-1 ${baseTextColor}  ${
+            className={`mb-1   ${
               location.pathname === `${parentPath}/newPatient`
                 ? `${activeStyle} pl-4 pr-4 pt-2 pb-2 `
-                : ""
-            }`}
+                : `${baseTextColor}`
+            } `}
           >
             Registration
           </Link>
@@ -42,10 +42,10 @@ function Sidebar({ Info1, Info2, parentPath, logout }) {
           <Link
             onClick={TOG}
             to="/reception/Search"
-            className={`mb-1 ${baseTextColor} ${
+            className={`mb-1  ${
               location.pathname === `${parentPath}/Search`
                 ? `${activeStyle} pl-4 pr-4 pt-2 pb-2`
-                : ""
+                : `${baseTextColor}`
             }`}
           >
             Search
@@ -66,20 +66,20 @@ function Sidebar({ Info1, Info2, parentPath, logout }) {
           location.pathname === "/reception/createvisit/IP") && (
           <div className="text-lg flex flex-col">
             <Link
-              className={`text-center p-2 ml-5 ${baseTextColor} ${
+              className={`text-center p-2 ml-5  ${
                 location.pathname === "/reception/createvisit/OP"
                   ? activeStyle
-                  : ""
+                  : `${baseTextColor}`
               }`}
               to="createvisit/OP"
             >
               Create Visit OP
             </Link>
             <Link
-              className={`text-center p-2 ml-5 ${baseTextColor}  ${
+              className={`text-center p-2 ml-5   ${
                 location.pathname === "/reception/createvisit/IP"
                   ? activeStyle
-                  : ""
+                  : `${baseTextColor}`
               }`}
               to="createvisit/IP"
             >
@@ -102,20 +102,20 @@ function Sidebar({ Info1, Info2, parentPath, logout }) {
           location.pathname === "/reception/createinvoice/IP") && (
           <div className="text-lg flex flex-col">
             <Link
-              className={`text-center p-2  ml-5 ${baseTextColor} ${
+              className={`text-center p-2  ml-5  ${
                 location.pathname === "/reception/createinvoice/OP"
                   ? activeStyle
-                  : ""
+                  : `${baseTextColor}`
               }`}
               to="createinvoice/OP"
             >
               Billing OP
             </Link>
             <Link
-              className={`text-center p-2  ml-5 ${baseTextColor} ${
+              className={`text-center p-2  ml-5  ${
                 location.pathname === "/reception/createinvoice/IP"
                   ? activeStyle
-                  : ""
+                  : `${baseTextColor}`
               }`}
               to="createinvoice/IP"
             >
@@ -123,9 +123,56 @@ function Sidebar({ Info1, Info2, parentPath, logout }) {
             </Link>
           </div>
         )}
+
+        <div className="flex flex-col items-start">
+          <Link
+            onClick={TOG}
+            to="/reception/adminpanel/dashboard"
+            className={`mb-1 ${baseTextColor} `}
+          >
+            Admin
+          </Link>
+        </div>
+        {(location.pathname === "/reception/adminpanel" ||
+          location.pathname === "/reception/adminpanel/dashboard" ||
+          location.pathname === "/reception/adminpanel/addlab" ||
+          location.pathname === "/reception/adminpanel/addOther") && (
+          <div className="text-lg flex flex-col">
+            <Link
+              className={`text-center p-2  ml-5  ${
+                location.pathname === "/reception/adminpanel/dashboard"
+                  ? activeStyle
+                  : `${baseTextColor}`
+              }`}
+              to="adminpanel/dashboard"
+            >
+              Dashboard
+            </Link>
+            <Link
+              className={`text-center p-2  ml-5  ${
+                location.pathname === "/reception/adminpanel/addlab"
+                  ? activeStyle
+                  : `${baseTextColor}`
+              }`}
+              to="adminpanel/addlab"
+            >
+              Lab Items Panel
+            </Link>
+            <Link
+              className={`text-center p-2  ml-5  ${
+                location.pathname === "/reception/adminpanel/addOther"
+                  ? activeStyle
+                  : `${baseTextColor}`
+              }`}
+              to="adminpanel/addOther"
+            >
+              Other Items Panel
+            </Link>
+          </div>
+        )}
       </div>
       <button
-        className="[height:5%] [width:80%] mb-5 bg-white border-2 border-amber-300 rounded-md"
+        className="[height:5%] [width:80%] mb-5 bg-red-600  text-white font-bold  rounded-md hover:bg-white hover:text-black"
         onClick={logout}
       >
         Logout

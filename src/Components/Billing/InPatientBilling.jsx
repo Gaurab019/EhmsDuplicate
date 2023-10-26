@@ -576,48 +576,50 @@ function InPatientBilling(props) {
             <div className="Rece-flex-container">
               <div className="container-right">
                 <div className="patientDet">
-                  <SearchInPatientID
-                    setpatientdetails={setpatientdetails}
-                    searchPatient={searchPatient}
-                    BsSearch={BsSearch}
-                    triggerreset={triggerreset}
-                    needsearch={true}
-                    patientid={patientid}
-                    setpatientid={setpatientID}
-                  />
-                  <DisabledPatientName
-                    externalvalue={searchPatientResult.patientname}
-                    triggerreset={triggerreset}
-                  />
+                  <div className=" grid grid-cols-1 gap-3 box-border [width:100%] xl:grid-cols-2 mb-10">
+                    <SearchInPatientID
+                      setpatientdetails={setpatientdetails}
+                      searchPatient={searchPatient}
+                      BsSearch={BsSearch}
+                      triggerreset={triggerreset}
+                      needsearch={true}
+                      patientid={patientid}
+                      setpatientid={setpatientID}
+                    />
+                    <DisabledPatientName
+                      externalvalue={searchPatientResult.patientname}
+                      triggerreset={triggerreset}
+                    />
 
-                  {/* <div className="fieldRow">
-                <span className="patHeading">Patient Name</span>
-                <span className="star">*</span> 
-                <input
-                  type="text"
-                  className="RecInp"
-                  value ={searchPatientResult.patientname}
-                />{""}
-              </div> */}
-                  <ConsultingDoctor
-                    searchDoc={searchDoc}
-                    setsearchDoc={setsearchDoc}
-                    setSelectedOption={setSelectedOption}
-                    selectedoption={patientdetails.patientdetails?.doctorname}
-                    newddlist={props.newddlist}
-                    triggertoggle={props.triggertoggle}
-                    triggerreset={triggerreset}
-                    setTriggertoggle={props.setTriggertoggle}
-                  />
-                  <PaymentType
-                    setpatientdetails={setpatientdetails}
-                    triggerreset={triggerreset}
-                    externalvalue={
-                      patientdetails.patientdetails?.transactionid
-                        ? patientdetails.patientdetails?.transactionid
-                        : ""
-                    }
-                  />
+                    {/* <div className="fieldRow">
+                    pan className="patHeading">Patient Name</span>
+                    pan className="star">*</span> 
+                    nput
+                    type="text"
+                    className="RecInp"
+                    value ={searchPatientResult.patientname}
+                    {""}
+                    v> */}
+                    <ConsultingDoctor
+                      searchDoc={searchDoc}
+                      setsearchDoc={setsearchDoc}
+                      setSelectedOption={setSelectedOption}
+                      selectedoption={patientdetails.patientdetails?.doctorname}
+                      newddlist={props.newddlist}
+                      triggertoggle={props.triggertoggle}
+                      triggerreset={triggerreset}
+                      setTriggertoggle={props.setTriggertoggle}
+                    />
+                    <PaymentType
+                      setpatientdetails={setpatientdetails}
+                      triggerreset={triggerreset}
+                      externalvalue={
+                        patientdetails.patientdetails?.transactionid
+                          ? patientdetails.patientdetails?.transactionid
+                          : ""
+                      }
+                    />
+                  </div>
                   {/* <div>
                     <span className="patHeading">Advance Bill</span>
                     <span className="star">*</span>
@@ -662,10 +664,13 @@ function InPatientBilling(props) {
                               )
                             }
                           >
-                            <option value="">Select Lab Item</option>
+                            <option value="" className=" font-medium text-base">
+                              Select Lab Item
+                            </option>
                             {props.billChargesTable[0]?.labchargesdata?.map(
                               (item) => (
                                 <option
+                                  className="font-medium text-sm"
                                   key={item.serviceid}
                                   value={item.servicename}
                                 >
@@ -743,10 +748,13 @@ function InPatientBilling(props) {
                               )
                             }
                           >
-                            <option value="">Select Bed Item</option>
+                            <option value="" className=" font-medium text-base">
+                              Select Bed Item
+                            </option>
                             {props.billChargesTable[1].bedchargesdata?.map(
                               (item) => (
                                 <option
+                                  className="font-medium text-sm"
                                   key={item.serviceid}
                                   value={item.servicename}
                                 >
@@ -826,10 +834,16 @@ function InPatientBilling(props) {
                                 )
                               }
                             >
-                              <option value="">Select Other Item</option>
+                              <option
+                                value=""
+                                className=" font-medium text-base"
+                              >
+                                Select Other Item
+                              </option>
                               {props.billChargesTable[2].otherchargesdata?.map(
                                 (item) => (
                                   <option
+                                    className="font-medium text-sm"
                                     key={item.serviceid}
                                     value={item.servicename}
                                   >

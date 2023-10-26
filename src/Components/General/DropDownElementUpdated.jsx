@@ -27,6 +27,7 @@ const DropDownElementV2 = ({
           ...baseStyles,
           borderColor: state.isFocused ? "blue" : "grey",
           color: "black",
+          height: "30px",
         }),
         option: (baseStyles, state) => ({
           ...baseStyles,

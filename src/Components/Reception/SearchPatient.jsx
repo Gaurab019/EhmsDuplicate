@@ -144,7 +144,8 @@ const SearchPatient = () => {
       {/* <div className="Rece-flex-container">
         <div className="container-right"> */}
       <div className="Rece-flex-item-right">
-        <div className="patientDet">
+        {/* <div className="patientDet"> */}
+        <div className="flex flex-col gap-5 justify-center items-start mb-3 [width:100%]">
           {" "}
           <PatientID
             setpatientdetails={setpatientdetails}

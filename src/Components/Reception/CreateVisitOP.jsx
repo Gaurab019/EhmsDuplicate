@@ -301,62 +301,64 @@ const CreateVisitOP = ({
       </h1>
       <div className="Rece-flex-item-right">
         <form onSubmit={(e) => callValidationAndSubmit(e)}>
-          <div className="Rece-flex-container">
+          {/* <div className="Rece-flex-container">
             <div className="container-right">
-              <div className="patientDet">
-                <PatientID
-                  setpatientdetails={setpatientdetails}
-                  searchPatient={searchPatient}
-                  BsSearch={BsSearch}
-                  triggerreset={triggerreset}
-                  needsearch={true}
-                  patientid={patientid}
-                  setpatientid={setpatientID}
-                />
-                <DisabledPatientName
-                  externalvalue={patientdetails.patientdetails?.patientname}
-                />
-                <ConsultingDoctor
-                  searchDoc={searchDoc}
-                  setsearchDoc={setsearchDoc}
-                  setSelectedOption={setSelectedOption}
-                  newddlist={newddlist}
-                  triggertoggle={triggertoggle}
-                  triggerreset={triggerreset}
-                  setTriggertoggle={setTriggertoggle}
-                  manualEntryTrigger={manualEntryTrigger}
-                  setmanualEntryTrigger={setmanualEntryTrigger}
-                  showmanualentrytrigger={true}
-                />
-                {/* <FormDetails InputFields={InputFields} />{" "} */}
-                {manualEntryTrigger ? (
-                  <ManualAmount
-                    setpatientdetails={setpatientdetails}
-                    triggerreset={triggerreset}
-                  />
-                ) : (
-                  <Amount
-                    setpatientdetails={setpatientdetails}
-                    triggerreset={triggerreset}
-                    externalvalue={
-                      _.isUndefined(patientdetails.patientdetails?.charges)
-                        ? 0
-                        : patientdetails.patientdetails?.charges
-                    }
-                  />
-                )}
-                <PaymentType
-                  setpatientdetails={setpatientdetails}
-                  triggerreset={triggerreset}
-                />
-                {showRegistrationBanner && (
-                  <div className="text-red-500 text-sm">
-                    * Registration Charges will be added for this patient in
-                    final bill
-                  </div>
-                )}
+              <div className="patientDet"> */}
+          <div className=" grid grid-cols-1 gap-3 box-border [width:100%] xl:grid-cols-2">
+            <PatientID
+              setpatientdetails={setpatientdetails}
+              searchPatient={searchPatient}
+              BsSearch={BsSearch}
+              triggerreset={triggerreset}
+              needsearch={true}
+              patientid={patientid}
+              setpatientid={setpatientID}
+            />
+            <DisabledPatientName
+              externalvalue={patientdetails.patientdetails?.patientname}
+            />
+            <ConsultingDoctor
+              searchDoc={searchDoc}
+              setsearchDoc={setsearchDoc}
+              setSelectedOption={setSelectedOption}
+              newddlist={newddlist}
+              triggertoggle={triggertoggle}
+              triggerreset={triggerreset}
+              setTriggertoggle={setTriggertoggle}
+              manualEntryTrigger={manualEntryTrigger}
+              setmanualEntryTrigger={setmanualEntryTrigger}
+              showmanualentrytrigger={true}
+            />
+            {/* <FormDetails InputFields={InputFields} />{" "} */}
+            {manualEntryTrigger ? (
+              <ManualAmount
+                setpatientdetails={setpatientdetails}
+                triggerreset={triggerreset}
+              />
+            ) : (
+              <Amount
+                setpatientdetails={setpatientdetails}
+                triggerreset={triggerreset}
+                externalvalue={
+                  _.isUndefined(patientdetails.patientdetails?.charges)
+                    ? 0
+                    : patientdetails.patientdetails?.charges
+                }
+              />
+            )}
+            <PaymentType
+              setpatientdetails={setpatientdetails}
+              triggerreset={triggerreset}
+            />
+            {showRegistrationBanner && (
+              <div className="text-red-500 text-sm">
+                * Registration Charges will be added for this patient in final
+                bill
               </div>
+            )}
+            {/* </div>
             </div>
+            </div> */}
           </div>
           <div className="buttondiv">
             <button

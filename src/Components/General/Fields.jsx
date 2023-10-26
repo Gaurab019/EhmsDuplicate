@@ -191,11 +191,19 @@ export const Sex = ({ triggerreset, setpatientdetails }) => {
   };
 
   return (
-    <div className="fieldRow">
-      <span className="patHeading">Sex</span>
-      <span className="star">*</span>
-      <div className="flex justify-center items-center">
-        <label className="RecInpButton m-0 flex items-center justify-start ">
+    // <div className="flex  gap-2 ">
+    <div className="fieldRow ">
+      {/* <div className="patHeading flex justify-end items-center"> */}
+      <div className="patHeading">
+        <span className="text-[#36454f] text-base font-normal [letter-spacing: 0.5px] box-border">
+          Sex
+        </span>
+        {/* <span className="star ml-2">*</span> */}
+      </div>
+      <span className="star ml-2">*</span>
+      <div className="flex justify-center items-center gap-16 [flex:70] [width:400px] [height:25px] box-border">
+        {/* <div className="RecInp"> */}
+        <label className=" m-0 flex items-center justify-start font-medium gap-1 text-base">
           <input
             type="radio"
             name="sex"
@@ -203,10 +211,10 @@ export const Sex = ({ triggerreset, setpatientdetails }) => {
             checked={value === "M"}
             onChange={() => handleRadioButtonChange("M")}
           />
-          Male
+          M
         </label>
 
-        <label className="RecInpButton m-0 flex items-center justify-start ">
+        <label className=" m-0 flex items-center justify-start font-medium gap-1 text-base ">
           <input
             type="radio"
             name="sex"
@@ -214,9 +222,9 @@ export const Sex = ({ triggerreset, setpatientdetails }) => {
             checked={value === "F"}
             onChange={() => handleRadioButtonChange("F")}
           />
-          Female
+          F
         </label>
-        <label className="RecInpButton m-0 flex items-center justify-start">
+        <label className=" m-0 flex items-center justify-start font-medium gap-1 text-base">
           <input
             type="radio"
             name="sex"
@@ -224,9 +232,10 @@ export const Sex = ({ triggerreset, setpatientdetails }) => {
             checked={value === "O"}
             onChange={() => handleRadioButtonChange("O")}
           />
-          Others
+          Oth
         </label>
       </div>
+      <span className="refreshicon"></span>
     </div>
   );
 };

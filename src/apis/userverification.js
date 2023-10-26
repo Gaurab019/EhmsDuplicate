@@ -37,6 +37,64 @@ export const enterPatientDetails = async (serverURL, token, patientdetails) => {
   }
   return data;
 };
+export const createlabItem = async (token, labItemJson) => {
+  let data = {
+    message: "",
+    created: false,
+    statuscode: "",
+  };
+  let serverURL = process.env.REACT_APP_CreateLabItem;
+  const config = {
+    headers: {
+      tokendata: token,
+    },
+  };
+  try {
+    let output = await axios.post(serverURL, labItemJson, config);
+    // console.log(output);
+    data.message = output.data.message;
+    data.created = output.data.created;
+    data.statuscode = output.status;
+  } catch (error) {
+    data.message = error;
+    data.created = false;
+    try {
+      data.statuscode = error.response.status;
+    } catch (error) {
+      data.statuscode = 500;
+    }
+  }
+  return data;
+};
+export const createOtherItem = async (token, otherItemJson) => {
+  let data = {
+    message: "",
+    created: false,
+    statuscode: "",
+  };
+  let serverURL = process.env.REACT_APP_CreateOtherItem;
+  const config = {
+    headers: {
+      tokendata: token,
+    },
+  };
+  try {
+    let output = await axios.post(serverURL, otherItemJson, config);
+    // console.log(output);
+    data.message = output.data.message;
+    data.created = output.data.created;
+    data.statuscode = output.status;
+  } catch (error) {
+    data.message = error;
+    data.created = false;
+    try {
+      data.statuscode = error.response.status;
+    } catch (error) {
+      data.statuscode = 500;
+    }
+  }
+  return data;
+};
 export const enterVisitingDetails = async (
   serverURL,
   token,

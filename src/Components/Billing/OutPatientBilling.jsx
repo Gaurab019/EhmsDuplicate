@@ -420,41 +420,32 @@ function OutPatientBilling(props) {
             <div className="Rece-flex-container">
               <div className="container-right">
                 <div className="patientDet">
-                  <PatientID
-                    setpatientdetails={setpatientdetails}
-                    searchPatient={searchPatient}
-                    BsSearch={BsSearch}
-                    triggerreset={triggerreset}
-                    needsearch={true}
-                    patientid={patientid}
-                    setpatientid={setpatientID}
-                  />
-                  <DisabledPatientName
-                    externalvalue={searchPatientResult.patientname}
-                    triggerreset={triggerreset}
-                  />
-                  {/* <div className="fieldRow">
-                  <span className="patHeading">Patient Name</span>
-                   <span className="sgittar">*</span>
-                  <input
-                    type="text"
-                    className="RecInp"
-                    value={searchPatientResult.patientname}
-                    readOnly
-                  />
-                  <span contentEditable="true" style={spanStyle}>{searchPatientResult.patientname}</span>
-                </div> */}
-                  {/* <ConsultingDoctor
-                  searchDoc={searchDoc}
-                  selectedoption={patientdetails.patientdetails?.doctorname}
-                  setsearchDoc={setsearchDoc}
-                  setSelectedOption={setSelectedOption}
-                  newddlist={props.newddlist}
-                  triggertoggle={props.triggertoggle}
-                  triggerreset={triggerreset}
-                  setTriggertoggle={props.setTriggertoggle}
-                /> */}
-                  <DoctorListInBilling
+                  <div className=" grid grid-cols-1 gap-3 box-border [width:100%] xl:grid-cols-2 mb-10">
+                    <PatientID
+                      setpatientdetails={setpatientdetails}
+                      searchPatient={searchPatient}
+                      BsSearch={BsSearch}
+                      triggerreset={triggerreset}
+                      needsearch={true}
+                      patientid={patientid}
+                      setpatientid={setpatientID}
+                    />
+                    <DisabledPatientName
+                      externalvalue={searchPatientResult.patientname}
+                      triggerreset={triggerreset}
+                    />
+                    {/* <div className="fieldRow">
+                    <span className="patHeading">Patient Name</span>
+                     <span className="sgittar">*</span>
+                    <input
+                      type="text"
+                      className="RecInp"
+                      value={searchPatientResult.patientname}
+                      readOnly
+                    />
+                    <span contentEditable="true" style={spanStyle}>{searchPatientResult.patientname}</span>
+                    div> */}
+                    {/* <ConsultingDoctor
                     searchDoc={searchDoc}
                     selectedoption={patientdetails.patientdetails?.doctorname}
                     setsearchDoc={setsearchDoc}
@@ -463,16 +454,27 @@ function OutPatientBilling(props) {
                     triggertoggle={props.triggertoggle}
                     triggerreset={triggerreset}
                     setTriggertoggle={props.setTriggertoggle}
-                  />
-                  <PaymentType
-                    setpatientdetails={setpatientdetails}
-                    triggerreset={triggerreset}
-                    externalvalue={
-                      patientdetails.patientdetails?.transactionid
-                        ? patientdetails.patientdetails?.transactionid
-                        : ""
-                    }
-                  />
+                     */}
+                    <DoctorListInBilling
+                      searchDoc={searchDoc}
+                      selectedoption={patientdetails.patientdetails?.doctorname}
+                      setsearchDoc={setsearchDoc}
+                      setSelectedOption={setSelectedOption}
+                      newddlist={props.newddlist}
+                      triggertoggle={props.triggertoggle}
+                      triggerreset={triggerreset}
+                      setTriggertoggle={props.setTriggertoggle}
+                    />
+                    <PaymentType
+                      setpatientdetails={setpatientdetails}
+                      triggerreset={triggerreset}
+                      externalvalue={
+                        patientdetails.patientdetails?.transactionid
+                          ? patientdetails.patientdetails?.transactionid
+                          : ""
+                      }
+                    />
+                  </div>
                   {showRegistrationBanner && (
                     <div className="text-red-500 text-sm">
                       * Registration Charges will be added for this patient in
@@ -501,9 +503,12 @@ function OutPatientBilling(props) {
                               )
                             }
                           >
-                            <option value="">Select Lab Item</option>
+                            <option value="" className="font-light text-sm">
+                              Select Lab Item
+                            </option>
                             {props.billChargesTable?.map((item) => (
                               <option
+                                className="font-medium text-sm"
                                 key={item.serviceid}
                                 value={item.servicename}
                               >

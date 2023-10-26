@@ -2,7 +2,7 @@ import React from "react";
 
 function FormDetails({ InputFields }) {
   return (
-    <>
+    <div className="flex justify-center items-center [width:400px]">
       {Object.entries(InputFields).map(([index, key]) => (
         <div
           className={key[2] == "label" ? "LabelDivider" : "fieldRow"}
@@ -31,7 +31,7 @@ function FormDetails({ InputFields }) {
           )}
         </div>
       ))}
-    </>
+    </div>
   );
 }
 

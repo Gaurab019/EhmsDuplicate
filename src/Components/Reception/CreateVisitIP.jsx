@@ -394,43 +394,45 @@ const CreateVisitIP = ({
             callValidationAndSubmit(e);
           }}
         >
-          <div>
-            <button
-              className={`button-81 text-center ${
-                count === 0 ? "button-active" : ""
-              }`}
-              type="button"
-              onClick={() => handleTabChange(0)}
-            >
-              Basic
-            </button>
-            <button
-              type="button"
-              className={`button-81 ${count === 1 ? "button-active" : ""}`}
-              onClick={() => handleTabChange(1)}
-            >
-              Bed
-            </button>
-            <button
-              type="button"
-              className={`button-81 ${count === 2 ? "button-active" : ""}`}
-              onClick={() => handleTabChange(2)}
-            >
-              Doctor
-            </button>
-            <button
-              type="button"
-              className={`button-81 ${count === 3 ? "button-active" : ""}`}
-              onClick={() => handleTabChange(3)}
-            >
-              Admission Preview
-            </button>
+          <div className="flex flex-col justify-center items-center">
+            <div>
+              <button
+                className={`button-81 text-center ${
+                  count === 0 ? "button-active" : ""
+                }`}
+                type="button"
+                onClick={() => handleTabChange(0)}
+              >
+                Basic
+              </button>
+              <button
+                type="button"
+                className={`button-81 ${count === 1 ? "button-active" : ""}`}
+                onClick={() => handleTabChange(1)}
+              >
+                Bed
+              </button>
+              <button
+                type="button"
+                className={`button-81 ${count === 2 ? "button-active" : ""}`}
+                onClick={() => handleTabChange(2)}
+              >
+                Doctor
+              </button>
+              <button
+                type="button"
+                className={`button-81 ${count === 3 ? "button-active" : ""}`}
+                onClick={() => handleTabChange(3)}
+              >
+                Admission Preview
+              </button>
+            </div>
 
             <div className="Rece-flex-container">
               <div className="container-right">
                 <div className="patientDet">
                   {count === 0 && (
-                    <>
+                    <div className=" grid grid-cols-1 gap-3 box-border [width:100%] xl:grid-cols-2">
                       {/* <PatientID
                     setpatientdetails={setpatientdetails}
                     searchPatient={searchPatient}
@@ -458,10 +460,10 @@ const CreateVisitIP = ({
                       <RelativeRelation />
                       <RelativePhoneNumber />
                       <Address />
-                    </>
+                    </div>
                   )}
                   {count === 1 && (
-                    <>
+                    <div className=" grid grid-cols-1 gap-3 box-border [width:100%] xl:grid-cols-2">
                       <BedType
                         beddetailslist={inPatientCodes?.beddetailslist}
                         triggertoggle={triggertoggle}
@@ -471,11 +473,11 @@ const CreateVisitIP = ({
                       <FloorNumber />
                       <RoomNumber />
                       <BedNumber />
-                    </>
+                    </div>
                   )}
 
                   {count === 2 && (
-                    <>
+                    <div className=" grid grid-cols-1 gap-3 box-border [width:100%] xl:grid-cols-2">
                       <DeptID
                         departmentdetails={
                           inPatientCodes?.departmentsvalueslist
@@ -490,7 +492,7 @@ const CreateVisitIP = ({
                         setTriggertoggle={setTriggertoggle}
                         triggerreset={triggerreset}
                       />
-                    </>
+                    </div>
                   )}
                   {count === 3 && (
                     <div className="patient-details">
@@ -519,7 +521,7 @@ const CreateVisitIP = ({
                     </div>
                   )}
                 </div>
-                <div className="flex flex-row justify-between items-center mt-2">
+                <div className="flex flex-row justify-center gap-10 items-center mt-2">
                   <button
                     className="button-6 reset"
                     type="button"

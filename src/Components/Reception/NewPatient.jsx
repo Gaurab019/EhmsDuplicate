@@ -181,7 +181,7 @@ const NewPatient = ({ othercharges }) => {
         >
           {/* <div className="Rece-flex-container">
             <div className="container-right"> */}
-          <div className=" patientDet">
+          <div className=" grid grid-cols-1 gap-3 box-border [width:100%] xl:grid-cols-2">
             {/* <FormDetails InputFields={InputFields} /> */}
             <NameField
               setpatientdetails={setpatientdetails}
