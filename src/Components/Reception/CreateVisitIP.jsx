@@ -229,9 +229,9 @@ const CreateVisitIP = ({
             govtid: JSON.parse(ippatientdetails.govttypedetails[1])[
               "govtidtype"
             ],
-            bedcategoryid: JSON.parse(ippatientdetails.bedtypedetails[1])[
-              "bedcategoryid"
-            ],
+            // bedcategoryid: JSON.parse(ippatientdetails.bedtypedetails[1])[
+            //   "bedcategoryid"
+            // ],
             doctorid: JSON.parse(ippatientdetails.consultingdoctor[1])["docid"],
             doctorname: ippatientdetails.consultingdoctor[0],
           },
@@ -259,14 +259,14 @@ const CreateVisitIP = ({
               carddatatemplate[CardDetails.Age] =
                 searchoutput.age + variables.agesuffix;
               carddatatemplate[CardDetails.Doctor] = doctordetails[0];
-              carddatatemplate[CardDetails.BedCategoryName] = bedtypename;
+              // carddatatemplate[CardDetails.BedCategoryName] = bedtypename;
               carddatatemplate[CardDetails.RelativePhone] =
                 ippatientdetails.relativephonenumber;
               carddatatemplate[CardDetails.Address] = ippatientdetails.address;
-              carddatatemplate[CardDetails.FloorNo] =
-                ippatientdetails.floornumber;
-              carddatatemplate[CardDetails.RoomNo] = ippatientdetails.roomno;
-              carddatatemplate[CardDetails.BedNo] = ippatientdetails.bedno;
+              // carddatatemplate[CardDetails.FloorNo] =
+              //   ippatientdetails.floornumber;
+              // carddatatemplate[CardDetails.RoomNo] = ippatientdetails.roomno;
+              // carddatatemplate[CardDetails.BedNo] = ippatientdetails.bedno;
               // // console.log(carddatatemplate);
               setCardDetails(carddatatemplate);
 
@@ -310,18 +310,20 @@ const CreateVisitIP = ({
   };
   const [count, setCount] = useState(0);
   const NEXT = () => {
-    if (count === 0) setCount(1);
+    // if (count === 0) setCount(1);
+    if (count === 0) setCount(2);
     // // console.log(count);
-    if (count === 1) setCount(2);
+    // if (count === 1) setCount(2);
     if (count === 2) setCount(3);
 
     // // console.log(patientdetails);
     // console.log(ippatientdetails);
   };
   const PREV = () => {
-    if (count === 1) setCount(0);
+    // if (count === 1) setCount(0);
     // // console.log(count);
-    if (count === 2) setCount(1);
+    // if (count === 2) setCount(1);
+    if (count === 2) setCount(0);
     if (count === 3) setCount(2);
   };
   const handleTabChange = (tabIndex) => {
@@ -347,8 +349,8 @@ const CreateVisitIP = ({
     try {
       govtidtype = JSON.parse(govttypedetails[1])["govtidtype"];
       govtidtypename = govttypedetails[0];
-      bedtypeid = JSON.parse(bedtypedetails[1])["bedcategoryid"];
-      bedtypename = bedtypedetails[0];
+      // bedtypeid = JSON.parse(bedtypedetails[1])["bedcategoryid"];
+      // bedtypename = bedtypedetails[0];
       deptid = JSON.parse(deptdetails[1])["departmentid"];
       deptname = deptdetails[0];
       docid = JSON.parse(doctordetails[1])["docid"];
@@ -370,11 +372,11 @@ const CreateVisitIP = ({
         value: ippatientdetails.relativephonenumber,
       },
       { label: "Address", value: ippatientdetails.address },
-      { label: "Bed ID", value: bedtypeid },
-      { label: "Bed Name", value: bedtypename },
-      { label: "Floor Number", value: ippatientdetails.floornumber },
-      { label: "Bed Number", value: ippatientdetails.bedno },
-      { label: "Room Number", value: ippatientdetails.roomno },
+      // { label: "Bed ID", value: bedtypeid },
+      // { label: "Bed Name", value: bedtypename },
+      // { label: "Floor Number", value: ippatientdetails.floornumber },
+      // { label: "Bed Number", value: ippatientdetails.bedno },
+      // { label: "Room Number", value: ippatientdetails.roomno },
       { label: "Dept ID", value: deptid },
       { label: "Dept Name", value: deptname },
       { label: "Doctor Name", value: doctorname },
@@ -405,13 +407,13 @@ const CreateVisitIP = ({
               >
                 Basic
               </button>
-              <button
+              {/* <button
                 type="button"
                 className={`button-81 ${count === 1 ? "button-active" : ""}`}
                 onClick={() => handleTabChange(1)}
               >
                 Bed
-              </button>
+              </button> */}
               <button
                 type="button"
                 className={`button-81 ${count === 2 ? "button-active" : ""}`}
@@ -607,10 +609,10 @@ const CreateVisitIP = ({
             relativename={admissionDetails[CardDetails.RelativeName]}
             relativephone={admissionDetails[CardDetails.RelativePhone]}
             relativerelation={admissionDetails[CardDetails.RelativeRelation]}
-            floorno={admissionDetails[CardDetails.FloorNo]}
-            bedno={admissionDetails[CardDetails.BedNo]}
-            roomno={admissionDetails[CardDetails.RoomNo]}
-            bedcategorytype={admissionDetails[CardDetails.BedCategoryName]}
+            // floorno={admissionDetails[CardDetails.FloorNo]}
+            // bedno={admissionDetails[CardDetails.BedNo]}
+            // roomno={admissionDetails[CardDetails.RoomNo]}
+            // bedcategorytype={admissionDetails[CardDetails.BedCategoryName]}
             departmentname={admissionDetails[CardDetails.DepartmentName]}
             admissionDate={new Date().toJSON().slice(0, 10)}
           />

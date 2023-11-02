@@ -25,6 +25,7 @@ var _ = require("lodash");
 function Reception() {
   const SideBarInfo1 = Con.Reception.SideBarInfo1;
   const SideBarInfo2 = Con.Reception.SideBarInfo2;
+  const role = useTokenStore((state) => state.token.role);
   const parentPath = Con.Reception.parentPath;
   const setpassword = usePasswordStore((state) => state.setpassword);
   const setusername = useUsernameStore((state) => state.setusername);
@@ -295,6 +296,7 @@ function Reception() {
           Info2={SideBarInfo2}
           parentPath={parentPath}
           logout={logout}
+          role={role}
         />
       </div>
       <div className="flex [height:100%] [width:100%] pl-2 pr-2">

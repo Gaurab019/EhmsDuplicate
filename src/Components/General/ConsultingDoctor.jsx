@@ -77,7 +77,7 @@ const ConsultingDoctor = ({
           <div className="refreshbutton iconstyle font-light">
             <input
               type="checkbox"
-              defaultChecked={false}
+              // defaultChecked={false}
               checked={manualEntryTrigger}
               id="ManualEntry"
               onChange={(e) => {

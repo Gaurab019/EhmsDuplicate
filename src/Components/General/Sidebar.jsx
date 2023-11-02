@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-function Sidebar({ Info1, Info2, parentPath, logout }) {
+function Sidebar({ Info1, Info2, parentPath, logout, role }) {
   const location = useLocation();
   const [toggle, setToggle] = useState(false);
   const [toggle2, setToggle2] = useState(false);
@@ -22,9 +22,65 @@ function Sidebar({ Info1, Info2, parentPath, logout }) {
       <div className="[flex:20%] [width:100%] flex flex-col justify-center gap-2 items-center box-border">
         <img src={Info1.imgURL} alt="ImageMissing" className="ReceptionImage" />
         <br />
-        <div className="text-[#fafafa]">{Info1.Title}</div>
+        {role == "Admin" ? (
+          <div className="text-[#fafafa]">Admin</div>
+        ) : (
+          <div className="text-[#fafafa]">{Info1.Title}</div>
+        )}
       </div>
       <div className="flex flex-col pl-6 pr-2 [flex:60%] [width:100%] text-xl gap-4 box-border">
+        {role == "Admin" ? (
+          <>
+            <div className="flex flex-col items-start">
+              <Link
+                onClick={TOG}
+                to="/reception/adminpanel/dashboard"
+                className={`mb-1 ${baseTextColor} `}
+              >
+                Admin
+              </Link>
+            </div>
+            {(location.pathname === "/reception/adminpanel" ||
+              location.pathname === "/reception/adminpanel/dashboard" ||
+              location.pathname === "/reception/adminpanel/addlab" ||
+              location.pathname === "/reception/adminpanel/addOther") && (
+              <div className="text-lg flex flex-col">
+                <Link
+                  className={`text-center p-2  ml-5  ${
+                    location.pathname === "/reception/adminpanel/dashboard"
+                      ? activeStyle
+                      : `${baseTextColor}`
+                  }`}
+                  to="adminpanel/dashboard"
+                >
+                  Dashboard
+                </Link>
+                <Link
+                  className={`text-center p-2  ml-5  ${
+                    location.pathname === "/reception/adminpanel/addlab"
+                      ? activeStyle
+                      : `${baseTextColor}`
+                  }`}
+                  to="adminpanel/addlab"
+                >
+                  Lab Items Panel
+                </Link>
+                <Link
+                  className={`text-center p-2  ml-5  ${
+                    location.pathname === "/reception/adminpanel/addOther"
+                      ? activeStyle
+                      : `${baseTextColor}`
+                  }`}
+                  to="adminpanel/addOther"
+                >
+                  Other Items Panel
+                </Link>
+              </div>
+            )}
+          </>
+        ) : (
+          <></>
+        )}
         <div className="flex flex-col items-start ">
           <Link
             onClick={TOG}
@@ -120,53 +176,6 @@ function Sidebar({ Info1, Info2, parentPath, logout }) {
               to="createinvoice/IP"
             >
               Billing IP
-            </Link>
-          </div>
-        )}
-
-        <div className="flex flex-col items-start">
-          <Link
-            onClick={TOG}
-            to="/reception/adminpanel/dashboard"
-            className={`mb-1 ${baseTextColor} `}
-          >
-            Admin
-          </Link>
-        </div>
-        {(location.pathname === "/reception/adminpanel" ||
-          location.pathname === "/reception/adminpanel/dashboard" ||
-          location.pathname === "/reception/adminpanel/addlab" ||
-          location.pathname === "/reception/adminpanel/addOther") && (
-          <div className="text-lg flex flex-col">
-            <Link
-              className={`text-center p-2  ml-5  ${
-                location.pathname === "/reception/adminpanel/dashboard"
-                  ? activeStyle
-                  : `${baseTextColor}`
-              }`}
-              to="adminpanel/dashboard"
-            >
-              Dashboard
-            </Link>
-            <Link
-              className={`text-center p-2  ml-5  ${
-                location.pathname === "/reception/adminpanel/addlab"
-                  ? activeStyle
-                  : `${baseTextColor}`
-              }`}
-              to="adminpanel/addlab"
-            >
-              Lab Items Panel
-            </Link>
-            <Link
-              className={`text-center p-2  ml-5  ${
-                location.pathname === "/reception/adminpanel/addOther"
-                  ? activeStyle
-                  : `${baseTextColor}`
-              }`}
-              to="adminpanel/addOther"
-            >
-              Other Items Panel
             </Link>
           </div>
         )}

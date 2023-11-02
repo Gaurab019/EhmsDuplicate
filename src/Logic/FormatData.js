@@ -101,10 +101,14 @@ export const FillInPatientData = async (formdata, token, username) => {
   InPatientDetailsTemplatelocal.governmentidtype = formdata.govtid;
   InPatientDetailsTemplatelocal.governmentidnumber = formdata.govtidvalue;
   InPatientDetailsTemplatelocal.address = formdata.address;
-  InPatientDetailsTemplatelocal.bedcategoryid = formdata.bedcategoryid;
-  InPatientDetailsTemplatelocal.floorno = formdata.floornumber;
-  InPatientDetailsTemplatelocal.roomno = formdata.roomno;
-  InPatientDetailsTemplatelocal.bedno = formdata.bedno;
+  // InPatientDetailsTemplatelocal.bedcategoryid = formdata.bedcategoryid;
+  // InPatientDetailsTemplatelocal.floorno = formdata.floornumber;
+  // InPatientDetailsTemplatelocal.roomno = formdata.roomno;
+  // InPatientDetailsTemplatelocal.bedno = formdata.bedno;
+  InPatientDetailsTemplatelocal.bedcategoryid = 10;
+  InPatientDetailsTemplatelocal.floorno = 1;
+  InPatientDetailsTemplatelocal.roomno = 1;
+  InPatientDetailsTemplatelocal.bedno = 1;
   InPatientDetailsTemplatelocal.doctors[0].doctorid = formdata.doctorid;
   InPatientDetailsTemplatelocal.doctors[0].doctorname = formdata.doctorname;
 
@@ -124,7 +128,7 @@ export const FillVisitingData = async (
   username,
   addregistrationflag
 ) => {
-  // // console.log("addregistrationflag: ", addregistrationflag);
+  console.log("addregistrationflag: ", addregistrationflag);
   let visitingdetailstemplatelocal = {
     patientid: "",
     consultingdoctor: "",
@@ -137,6 +141,7 @@ export const FillVisitingData = async (
     doctorcharges: [{ ...DoctorChargesDataModel[0] }],
   };
 
+  console.log("Inside FillDAtaOP");
   visitingdetailstemplatelocal.requestid = v4();
   visitingdetailstemplatelocal.patientid = formdata.patientid;
   visitingdetailstemplatelocal.consultingdoctor = formdata.consultingdoctor;
@@ -146,7 +151,12 @@ export const FillVisitingData = async (
   visitingdetailstemplatelocal.manualEntry = formdata.manualEntry;
   visitingdetailstemplatelocal.doctorcharges[0].doctorid = formdata.doctorid;
 
-  if (addregistrationflag) {
+  console.log(
+    "validation check for registrationfees",
+    formdata.registrationfees
+  );
+
+  if (addregistrationflag && formdata.registrationfees == "1") {
     // visitingdetailstemplatelocal.othercharges = othercharges;
     visitingdetailstemplatelocal.othercharges = RegistrationDataModel;
   }

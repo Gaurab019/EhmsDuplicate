@@ -52,7 +52,9 @@ const CreateVisitOP = ({
   const [carddetails, setcarddetails] = useState({});
   const [searchDoc, setsearchDoc] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
-  const [patientdetails, setpatientdetails] = useState({});
+  const [patientdetails, setpatientdetails] = useState({
+    patientdetails: { registrationfees: 1 }, // added this state to track the removal of registration fees in case of certain doctors
+  });
   const [triggerreset, settriggerreset] = useState(false);
   const [retriggersubmit, setretriggersubmit] = useState(false);
   const [retriggersearch, setretriggersearch] = useState(false);
@@ -62,7 +64,8 @@ const CreateVisitOP = ({
   const [manualEntryTrigger, setmanualEntryTrigger] = useState(false);
 
   useEffect(() => {
-    // console.log("selected option effect triggered");
+    console.log("selected option effect triggered ", selectedOption);
+
     if (selectedOption.length > 0) {
       let docdata = JSON.parse(selectedOption[1]);
       // console.log(docdata);
@@ -72,10 +75,30 @@ const CreateVisitOP = ({
           consultingdoctor: "".concat("DR ", docdata?.doctorname.toUpperCase()),
           doctorid: docdata?.docid,
           charges: docdata?.rate,
+          registrationfees: docdata?.registrationfees,
         },
       }));
     }
   }, [selectedOption]);
+
+  useEffect(() => {
+    console.log(
+      " patientdetails.registrationfees triggered",
+      patientdetails.patientdetails
+    );
+    console.log(
+      " patientdetails.registrationfees is ",
+      patientdetails.patientdetails.registrationfees
+    );
+    if (patientdetails.patientdetails.registrationfees == "0") {
+      setShowRegistrationBanner(false);
+    } else if (
+      patientdetails.patientdetails?.consultingdoctor &&
+      patientdetails.patientdetails.registrationfees == "1"
+    ) {
+      setShowRegistrationBanner(true);
+    }
+  }, [patientdetails.patientdetails.registrationfees]);
   // useEffect(() => {
   //   // console.log("selected option effect triggered");
   //   if (searchDoc.length > 0) {
@@ -135,6 +158,10 @@ const CreateVisitOP = ({
     }
   }, [generateReport]);
 
+  useEffect(() => {
+    console.log(newddlist);
+  }, [newddlist]);
+
   // const resetForm = () => {
   //   setpatientid("");
   // };
@@ -154,7 +181,9 @@ const CreateVisitOP = ({
     setcarddetails({});
     setShowRegistrationBanner(false);
     setGenerateReport(false);
-    setpatientdetails({});
+    setpatientdetails({
+      patientdetails: { registrationfees: 1 }, // added this state to track the removal of registration fees in case of certain doctors
+    });
     setopBillingResponse({});
     toastSuccessStatus("Form Reset Successfully");
     setmanualEntryTrigger(false);
@@ -163,7 +192,9 @@ const CreateVisitOP = ({
     console.log(manualEntryTrigger);
     settriggerreset(!triggerreset);
     setpatientID("");
-    setpatientdetails({});
+    setpatientdetails({
+      patientdetails: { registrationfees: 1 }, // added this state to track the removal of registration fees in case of certain doctors
+    });
     setShowRegistrationBanner(false);
     setmanualEntryTrigger(false);
   };
@@ -195,10 +226,14 @@ const CreateVisitOP = ({
           searchoutput.age = searchdata.outdata.data[0].age;
           searchoutput.mobilenum = searchdata.outdata.data[0].mobilenum;
           searchoutput.addregistrationflag =
-            searchdata.outdata.data[0].registrationpaidflag == 0 ? true : false;
+            searchdata.outdata.data[0].registrationpaidflag == 0 &&
+            patientdetails.patientdetails.registrationfees
+              ? true
+              : false;
           searchoutput.consultingdoctor =
             patientdetails.patientdetails.consultingdoctor;
-          searchdata.outdata.data[0].registrationpaidflag == 0
+          searchdata.outdata.data[0].registrationpaidflag == 0 &&
+          patientdetails.patientdetails.registrationfees
             ? setShowRegistrationBanner(true)
             : setShowRegistrationBanner(false);
 

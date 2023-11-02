@@ -100,7 +100,7 @@ export default function AdmissionData({
             </span>
           </p>
 
-          <p className="text-sm  mb-1 [flex: 30]">
+          {/* <p className="text-sm  mb-1 [flex: 30]">
             Bed Cateogry :{" "}
             <span className=" text-base ml-2 font-semibold">
               {bedcategorytype}
@@ -117,7 +117,7 @@ export default function AdmissionData({
           <p className="text-sm  mb-1 [flex: 30]">
             Bed No :{" "}
             <span className=" text-base ml-2 font-semibold">{bedno}</span>
-          </p>
+          </p> */}
         </div>
         {/* <div className="flex flex-col justify-evenly items-start gap-3 [flex: 30]"></div> */}
         {/* <div className="flex justify-evenly items-center gap-10">

@@ -42,15 +42,15 @@ export const inpatientdetailsvalidation = (formdata) => {
   // validate address
   if (validate("address", "address", formdata)) return false;
   // validate floornumber
-  if (validate("floornumber", "floornumber", formdata)) return false;
-  // validate bedno
-  if (validate("bedno", "bedno", formdata)) return false;
-  // validate roomno
-  if (validate("roomno", "roomno", formdata)) return false;
+  // if (validate("floornumber", "floornumber", formdata)) return false;
+  // // validate bedno
+  // if (validate("bedno", "bedno", formdata)) return false;
+  // // validate roomno
+  // if (validate("roomno", "roomno", formdata)) return false;
   //validate govttypedetails
   if (formdata.govttypedetails.length <= 0) return false;
   // validate bedtypedetails
-  if (formdata.bedtypedetails.length <= 0) return false;
+  // if (formdata.bedtypedetails.length <= 0) return false;
   // validate deptdetails
   if (formdata.deptdetails.length <= 0) return false;
   // validate consultingdoctor
