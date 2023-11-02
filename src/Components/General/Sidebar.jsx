@@ -9,10 +9,10 @@ function Sidebar({ Info1, Info2, parentPath, logout, role }) {
     setToggle(!toggle);
     // console.log(toggle);
   };
-  const TOG2 = () => {
-    setToggle(!toggle2);
-    // console.log(toggle2);
-  };
+  // const TOG2 = () => {
+  //   setToggle(!toggle2);
+  //   // console.log(toggle2);
+  // };
 
   const baseTextColor = "text-[#b7b7f2]";
   const activeStyle =
@@ -34,7 +34,8 @@ function Sidebar({ Info1, Info2, parentPath, logout, role }) {
             <div className="flex flex-col items-start">
               <Link
                 onClick={TOG}
-                to="/reception/adminpanel/dashboard"
+                // to="/reception/adminpanel/dashboard"
+                to="/reception/adminpanel/addlab"
                 className={`mb-1 ${baseTextColor} `}
               >
                 Admin
@@ -45,7 +46,7 @@ function Sidebar({ Info1, Info2, parentPath, logout, role }) {
               location.pathname === "/reception/adminpanel/addlab" ||
               location.pathname === "/reception/adminpanel/addOther") && (
               <div className="text-lg flex flex-col">
-                <Link
+                {/* <Link
                   className={`text-center p-2  ml-5  ${
                     location.pathname === "/reception/adminpanel/dashboard"
                       ? activeStyle
@@ -54,7 +55,7 @@ function Sidebar({ Info1, Info2, parentPath, logout, role }) {
                   to="adminpanel/dashboard"
                 >
                   Dashboard
-                </Link>
+                </Link> */}
                 <Link
                   className={`text-center p-2  ml-5  ${
                     location.pathname === "/reception/adminpanel/addlab"
