@@ -56,7 +56,10 @@ export default function InvoiceGenerator({
       <div className="invoice__preview bg-white p-10 rounded">
         <ReactToPrint
           trigger={() => (
-            <button className="bg-blue-500 ml-5  hover:text-blue-500 font-bold py-2 px-8 rounded shadow border-2 border-blue-500 printbutton transition-all duration-300">
+            <button
+              type="button"
+              className="bg-blue-500 ml-5  hover:text-blue-500 font-bold py-2 px-8 rounded shadow border-2 border-blue-500 printbutton transition-all duration-300"
+            >
               Print
             </button>
           )}
@@ -70,7 +73,7 @@ export default function InvoiceGenerator({
             hospitallogo={hospitallogo}
             asset={asset}
           />
-          <MainDetails admissionReceipt={admissionReceipt} IPR={IPR}/>
+          <MainDetails admissionReceipt={admissionReceipt} IPR={IPR} />
           {admissionReceipt ? (
             <>
               <AdmissionData
