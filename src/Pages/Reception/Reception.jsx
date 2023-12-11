@@ -20,6 +20,7 @@ import { useInPatientCodeStore } from "../../store/store";
 import CreateVisitButtons from "../../Components/Reception/CreateVisitButtons";
 import CreateBIllingButtons from "../../Components/Billing/CreateBIllingButtons";
 import AdminPanel from "../../Components/Admin/AdminPanel";
+import { PharmacyBilling } from "../../Components/Reception/PharmacyBilling";
 var _ = require("lodash");
 
 function Reception() {
@@ -314,6 +315,10 @@ function Reception() {
             }
           />
           <Route path="search" element={<SearchPatient />} />
+          <Route
+            path="pharmacyBilling"
+            element={<PharmacyBilling newddlist={newddlist} />}
+          />
           <Route
             path="createvisit/*"
             element={

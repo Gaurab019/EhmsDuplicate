@@ -111,6 +111,19 @@ function Sidebar({ Info1, Info2, parentPath, logout, role }) {
         <div className="flex flex-col items-start">
           <Link
             onClick={TOG}
+            to="/reception/PharmacyBilling"
+            className={`mb-1  ${
+              location.pathname === `${parentPath}/PharmacyBilling`
+                ? `${activeStyle} pl-4 pr-4 pt-2 pb-2`
+                : `${baseTextColor}`
+            }`}
+          >
+            Pharmacy Billing
+          </Link>
+        </div>
+        <div className="flex flex-col items-start">
+          <Link
+            onClick={TOG}
             to="/reception/createvisit/OP"
             className={`mb-1 ${baseTextColor} `}
           >
